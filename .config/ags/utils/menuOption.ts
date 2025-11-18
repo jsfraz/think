@@ -5,6 +5,7 @@ export class MenuOption {
   action: (() => void) | undefined;
   isSeparator: boolean;
   submenu: Array<MenuOption> | undefined;
+  checkedCondition: (() => Promise<boolean>) | undefined;
 
   constructor(
     {
@@ -13,7 +14,8 @@ export class MenuOption {
       parentWindowName = undefined,
       action = undefined,
       isSeparator = false,
-      submenu = undefined
+      submenu = undefined,
+      checkedCondition = undefined
     }: {
       label?: string | undefined;
       icon?: string | undefined;
@@ -21,6 +23,7 @@ export class MenuOption {
       action?: (() => void) | undefined;
       isSeparator?: boolean;
       submenu?: Array<MenuOption> | undefined;
+      checkedCondition?: (() => Promise<boolean>) | undefined;
     } = {}
   ) {
     this.label = label;
@@ -29,6 +32,7 @@ export class MenuOption {
     this.action = action;
     this.isSeparator = isSeparator;
     this.submenu = submenu;
+    this.checkedCondition = checkedCondition;
   }
 
   // Get unique window name hash for submenu

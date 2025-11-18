@@ -7,6 +7,7 @@
 
 // Define color variables based on matugen palette
 $glass-base: $surface;           // Base glass color
+$glass-base-menu: $inverse_surface;   // Base glass color for menus
 $glass-accent: $primary;          // Accent color
 $glass-border: $outline;          // Border color
 $text-primary: $secondary_fixed;       // Primary text
@@ -34,9 +35,9 @@ $hover-overlay: $surface;      // Hover effect color
 
 .glass-menu {
   background: linear-gradient(135deg,
-      rgba($glass-base, 0.15) 0%,
-      rgba($glass-base, 0.05) 50%,
-      rgba($glass-base, 0.1) 100%);
+      rgba($glass-base-menu, 0.15) 0%,
+      rgba($glass-base-menu, 0.05) 50%,
+      rgba($glass-base-menu, 0.1) 100%);
   border: 1px solid rgba($glass-border, 0.05);
   border-top-color: rgba($glass-border, 0.1);
   border-radius: 15px;

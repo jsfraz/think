@@ -9,6 +9,18 @@ import { MenuOption } from "./utils/menuOption"
 
 const SUBMENU_MARGIN_LEFT = 5;
 const SUBMENU_MARGIN_TOP = 10;
+const COLORS = [
+  "blue",
+  "brown",
+  "green",
+  "orange",
+  "pink",
+  "purple",
+  "red",
+  "slate",
+  "teal",
+  "yellow"
+]
 
 const MENU_OPTIONS: Array<MenuOption> = [
   new MenuOption({
@@ -27,7 +39,7 @@ const MENU_OPTIONS: Array<MenuOption> = [
   }),
   new MenuOption({
     label: "Appearance",
-    icon: "󰏘",
+    icon: "",
     submenu: [
       new MenuOption({
         label: "Change background",
@@ -36,7 +48,62 @@ const MENU_OPTIONS: Array<MenuOption> = [
           execAsync(["scripts/set_background.sh"]).then(() => {
           }).catch(console.error);
         },
-      })
+      }),
+      new MenuOption({
+        label: "Set mode",
+        icon: "",
+        submenu: [
+          new MenuOption({
+            label: "Dark",
+            icon: "",
+            action: () => {
+              execAsync(["darkman", "set", "dark"]).catch(console.error);
+            }
+          }),
+          new MenuOption({
+            label: "Light",
+            icon: "",
+            action: () => {
+              execAsync(["darkman", "set", "light"]).catch(console.error);
+            }
+          }),
+          new MenuOption({
+            label: "Auto",
+            action: () => {
+              // TODO
+              // execAsync(["darkman", "toggle"]).catch(console.error);
+            }
+          }),
+        ],
+        parentWindowName: `submenu-${new MenuOption({ label: "appearance", icon: "󰏘" }).getHash()}`
+      }),
+      new MenuOption({
+        label: "Set color",
+        icon: "",
+        submenu: [
+          new MenuOption({
+            label: "Auto",
+            action: () => {
+              // TODO
+            }
+          }),
+          ...COLORS.map(color => new MenuOption({
+            label: color[0].toUpperCase() + color.substring(1),
+            action: () => {
+              // TODO
+            },
+            checkedCondition: async () => {
+              const currentColor = await execAsync(["scripts/get_config_value.sh", "color"]).then(() => {
+              }).catch((error) => {
+                console.error(error);
+                return "";
+              });
+              return (currentColor as string).trim() === color;
+            }
+          }))
+        ],
+        parentWindowName: `submenu-${new MenuOption({ label: "appearance", icon: "󰏘" }).getHash()}`
+      }),
     ],
     parentWindowName: "main-menu"
   }),
@@ -55,11 +122,12 @@ const MENU_OPTIONS: Array<MenuOption> = [
 ];
 
 // Prepare submenus and return them as windows
-function setupSubmenus(submenuOptions: Array<MenuOption>, gdkmonitor: Gdk.Monitor): void {
+function setupSubmenus(submenuOptions: Array<MenuOption>, gdkmonitor: Gdk.Monitor, parentWindowName: string = "", marginLeft: number = 0): void {
   submenuOptions.forEach((option, index) => {
     if (option.submenu) {
       const ENTRY_HEIGHT = 26;
       const SEPARATOR_HEIGHT = 1;
+      const MENU_WIDTH = 185;
       // Calculate how many items are before this submenu
       let plusMargin = 0;
       for (let i = 0; i < index; i++) {
@@ -69,17 +137,24 @@ function setupSubmenus(submenuOptions: Array<MenuOption>, gdkmonitor: Gdk.Monito
           plusMargin += ENTRY_HEIGHT;
         }
       }
+
+      const submenuName = `submenu-${option.getHash()}`;
+      const effectiveParentWindowName = option.parentWindowName || parentWindowName;
+
       // Menu instance for submenu
       Menu(
         gdkmonitor,
         option.submenu!,
         {
-          name: `submenu-${option.getHash()}`,
-          parentWindowName: option.parentWindowName,
-          plusMarginLeft: SUBMENU_MARGIN_LEFT + 1,
+          name: submenuName,
+          parentWindowName: effectiveParentWindowName,
+          plusMarginLeft: marginLeft == 0 ? (SUBMENU_MARGIN_LEFT + 1) : (SUBMENU_MARGIN_LEFT * 2 + 1 + marginLeft),
           plusMarginTop: SUBMENU_MARGIN_TOP + plusMargin
         }
       )
+
+      // Recursively setup nested submenus
+      setupSubmenus(option.submenu!, gdkmonitor, submenuName, MENU_WIDTH * 2);
     }
   });
 }
@@ -93,7 +168,7 @@ app.start({
     app.get_monitors().map(PowerMenu);
     app.get_monitors().map((m) => Menu(m, MENU_OPTIONS, { plusMarginTop: SUBMENU_MARGIN_TOP, plusMarginLeft: SUBMENU_MARGIN_LEFT }));
     app.get_monitors().map((m) => {
-      setupSubmenus(MENU_OPTIONS, m);
+      setupSubmenus(MENU_OPTIONS, m, "main-menu");
     });
   },
 })
