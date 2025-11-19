@@ -118,7 +118,7 @@ const MENU_OPTIONS: Array<MenuOption> = [
 ];
 
 // Prepare submenus and return them as windows
-function setupSubmenus(submenuOptions: Array<MenuOption>, gdkmonitor: Gdk.Monitor, parentWindowName: string = "", marginLeft: number = 0): void {
+function setupSubmenus(submenuOptions: Array<MenuOption>, gdkmonitor: Gdk.Monitor, parentWindowName: string = "", marginLeft: number = 0, parentTopMargin: number = 0): void {
   submenuOptions.forEach((option, index) => {
     if (option.submenu) {
       const ENTRY_HEIGHT = 26;
@@ -136,6 +136,7 @@ function setupSubmenus(submenuOptions: Array<MenuOption>, gdkmonitor: Gdk.Monito
 
       const submenuName = `submenu-${option.getHash()}`;
       const effectiveParentWindowName = option.parentWindowName || parentWindowName;
+      const totalTopMargin = parentTopMargin + plusMargin;
 
       // Menu instance for submenu
       Menu(
@@ -145,12 +146,12 @@ function setupSubmenus(submenuOptions: Array<MenuOption>, gdkmonitor: Gdk.Monito
           name: submenuName,
           parentWindowName: effectiveParentWindowName,
           plusMarginLeft: marginLeft == 0 ? (SUBMENU_MARGIN_LEFT + 1) : (SUBMENU_MARGIN_LEFT * 2 + 1 + marginLeft),
-          plusMarginTop: SUBMENU_MARGIN_TOP + plusMargin
+          plusMarginTop: SUBMENU_MARGIN_TOP + totalTopMargin
         }
       )
 
       // Recursively setup nested submenus
-      setupSubmenus(option.submenu!, gdkmonitor, submenuName, MENU_WIDTH * 2);
+      setupSubmenus(option.submenu!, gdkmonitor, submenuName, MENU_WIDTH * 2, totalTopMargin);
     }
   });
 }
@@ -164,7 +165,7 @@ app.start({
     app.get_monitors().map(PowerMenu);
     app.get_monitors().map((m) => Menu(m, MENU_OPTIONS, { plusMarginTop: SUBMENU_MARGIN_TOP, plusMarginLeft: SUBMENU_MARGIN_LEFT }));
     app.get_monitors().map((m) => {
-      setupSubmenus(MENU_OPTIONS, m, "main-menu");
+      setupSubmenus(MENU_OPTIONS, m, "main-menu", 0, 0);
     });
   },
 })
