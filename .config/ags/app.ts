@@ -93,12 +93,8 @@ const MENU_OPTIONS: Array<MenuOption> = [
               // TODO
             },
             checkedCondition: async () => {
-              const currentColor = await execAsync(["scripts/get_config_value.sh", "color"]).then(() => {
-              }).catch((error) => {
-                console.error(error);
-                return "";
-              });
-              return (currentColor as string).trim() === color;
+              const currentColor = await execAsync(["scripts/get_config_value.sh", "color"]);
+              return currentColor.trim() === color;
             }
           }))
         ],
