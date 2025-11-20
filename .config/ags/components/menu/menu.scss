@@ -34,7 +34,7 @@
     }
 
     &.animate {
-      $button-count: 10;  // Not actual count
+      $button-count: 20;  // Not actual count
       $animation-delay-step: 0.05s;
 
       @for $i from 1 through $button-count {

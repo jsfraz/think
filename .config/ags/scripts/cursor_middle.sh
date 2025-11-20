@@ -3,7 +3,7 @@
 PLUS_X=0
 PLUS_Y=0
 
-# Parsování arguments
+# Arguments
 while [[ $# -gt 0 ]]; do
   case $1 in
     -plusX)

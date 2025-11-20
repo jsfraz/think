@@ -5,15 +5,15 @@ import { execAsync } from "ags/process";
 
 // https://aylur.github.io/ags/guide/first-widgets.html#widget-signal-handlers
 
-function shutdown() {
-  execAsync(["systemctl", "poweroff"]).catch(console.error);
+async function shutdown(): Promise<void> {
+  await execAsync(["systemctl", "poweroff"]).catch(console.error);
 }
 
-function reboot() {
-  execAsync(["systemctl", "reboot"]).catch(console.error);
+async function reboot(): Promise<void> {
+  await execAsync(["systemctl", "reboot"]).catch(console.error);
 }
 
-function cancel() {
+function cancel(): void {
   app.toggle_window("power-menu")
 }
 

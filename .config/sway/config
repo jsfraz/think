@@ -28,6 +28,7 @@ smart_gaps disable
 for_window [app_id="zenity"] floating enable; 
 
 ### Autostart
+exec ~/.config/sway/scripts/exec.sh
 exec_always ~/.config/sway/scripts/exec_always.sh
 
 ### Idle configuration

@@ -8,9 +8,9 @@ interface NotifyOptions {
 }
 
 // Send a desktop notification using notify-send
-export function notify(options: NotifyOptions): void {
+export async function notify(options: NotifyOptions): Promise<void> {
     // TODO Use Astal lib
-    execAsync([
+    await execAsync([
         "notify-send",
         options.summary,
         options.body,

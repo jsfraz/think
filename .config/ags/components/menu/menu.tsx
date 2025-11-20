@@ -3,7 +3,7 @@ import { Astal, Gdk, Gtk } from "ags/gtk4"
 import app from "ags/gtk4/app";
 import { MenuOption } from "../../utils/menuOption";
 
-function cancel() {
+function cancel(): void {
   app.toggle_window("main-menu")
 }
 
@@ -14,8 +14,9 @@ export default function Menu(gdkmonitor: Gdk.Monitor, menuOptions: Array<MenuOpt
   const [animate, _setAnimate] = createState(false);
   const [parentWindow, _setParentWindow] = createState<Gtk.Window | null>(null);
   const [activeSubmenu, _setActiveSubmenu] = createState<string | null>(null);
+  const [optionsChecked, _setOptionsChecked] = createState<boolean[]>(menuOptions.map(_ => false));
 
-  function closeAllSubmenus() {
+  function closeAllSubmenus(): void {
     let subMenus = OPTIONS.get().filter((item) => item.submenu);
     subMenus.forEach((item) => {
       let window = app.get_window(`submenu-${item.getHash()}`);
@@ -26,13 +27,27 @@ export default function Menu(gdkmonitor: Gdk.Monitor, menuOptions: Array<MenuOpt
     _setActiveSubmenu(null);
   }
 
-  function isAnySubmenuOpen() {
+  function isAnySubmenuOpen(): boolean {
     let subMenus = OPTIONS.get().filter((item) => item.submenu);
     return subMenus.some((item) => {
       let window = app.get_window(`submenu-${item.getHash()}`);
       return window ? window.get_visible() : false;
     });
   }
+
+  async function loadCheckedStates() {
+    const promises = menuOptions.map(async (option) => {
+      if (option.checkedCondition != undefined) {
+        return await option.checkedCondition();
+      }
+      return false;
+    });
+    
+    const values = await Promise.all(promises);
+    _setOptionsChecked(values);
+  }
+  
+  loadCheckedStates();
 
   return (
     <window
@@ -72,7 +87,7 @@ export default function Menu(gdkmonitor: Gdk.Monitor, menuOptions: Array<MenuOpt
       />
       <box class="menu-content" orientation={Gtk.Orientation.VERTICAL} spacing={1}>
         <For each={OPTIONS}>
-          {(item, _: Accessor<number>) => (
+          {(item, index: Accessor<number>) => (
             !item.isSeparator ? (<button
               class={animate((val) => `menu-button vpadding1 transparentThenHoverFg ${val ? "animate" : ""}`)}
               hexpand={true}
@@ -122,6 +137,13 @@ export default function Menu(gdkmonitor: Gdk.Monitor, menuOptions: Array<MenuOpt
                   <label
                     class="vpadding0"
                     label=""
+                    halign={Gtk.Align.END}
+                  />
+                )}
+                {!item.submenu && item.checkedCondition && (
+                  <label
+                    class="vpadding0"
+                    label={optionsChecked((val) => val.at(index.get())! ? "" : "")}
                     halign={Gtk.Align.END}
                   />
                 )}
