@@ -27,6 +27,7 @@ Rice for my shit Elitebook 840.
 - [MoreWaita](https://github.com/somepaulo/MoreWaita)
 - [Adwaita-colors](https://github.com/dpejoh/Adwaita-colors) (run `sudo ./morewaita.sh` after installing MoreWaita and Adwaita-colors)
 - [python-pillow](https://pypi.org/project/pillow/) package
+- [HyperFluent-GRUB-Theme (arch btw)](https://github.com/Coopydood/HyperFluent-GRUB-Theme) (installation below)
 
 ## swayfx
 
@@ -68,7 +69,7 @@ I've created a [runcat](https://github.com/win0err/gnome-runcat)-like icon on th
 ./install_runcat_icons.sh
 ```
 
-### Generating SCSS manully
+### Generating SCSS manually
 
 To run `ags`, you need to generate SCSS using `matugen`:
 
@@ -136,3 +137,15 @@ After installing and creating config, enable the user service:
 ```bash
 systemctl --user enable --now darkman.service
 ```
+
+## HyperFluent-GRUB-Theme
+To install the HyperFluent GRUB theme, run the following command:
+
+```bash
+./install_grub_theme.sh
+```
+
+<!-- yeah -->
+<p align="center">
+  <img src="https://github.com/Coopydood/ultimate-macOS-KVM/assets/39441479/39d78d4b-8ce8-44f4-bba7-fefdbf2f80db" width="10%"> </img>
+</p>
