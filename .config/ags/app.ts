@@ -11,13 +11,13 @@ const SUBMENU_MARGIN_LEFT = 5;
 const SUBMENU_MARGIN_TOP = 10;
 const COLORS = [
   "blue",
-  "brown",
+  // "brown",
   "green",
   "orange",
   "pink",
   "purple",
   "red",
-  "slate",
+  // "slate",
   "teal",
   "yellow"
 ]
@@ -26,15 +26,15 @@ const MENU_OPTIONS: Array<MenuOption> = [
   new MenuOption({
     label: "System Monitor",
     icon: "󰓅",
-    action: () => {
-      execAsync(["gnome-system-monitor"]).catch(console.error);
+    action: async () => {
+      await execAsync(["gnome-system-monitor"]).catch(console.error);
     }
   }),
   new MenuOption({
     label: "Files",
     icon: "",
-    action: () => {
-      execAsync(["nemo"]).catch(console.error);
+    action: async () => {
+      await execAsync(["nemo"]).catch(console.error);
     }
   }),
   new MenuOption({
@@ -44,9 +44,8 @@ const MENU_OPTIONS: Array<MenuOption> = [
       new MenuOption({
         label: "Change background",
         icon: "󰋩",
-        action() {
-          execAsync(["scripts/set_background.sh"]).then(() => {
-          }).catch(console.error);
+        action: async () => {
+          await execAsync(["scripts/set_background.sh"]).catch(console.error);
         },
       }),
       new MenuOption({
@@ -54,24 +53,23 @@ const MENU_OPTIONS: Array<MenuOption> = [
         icon: "",
         submenu: [
           new MenuOption({
+            label: "Auto",
+            action: async () => {
+              // TODO
+            }
+          }),
+          new MenuOption({
             label: "Dark",
             icon: "",
-            action: () => {
-              execAsync(["darkman", "set", "dark"]).catch(console.error);
+            action: async () => {
+              // await execAsync(["darkman", "set", "dark"]).catch(console.error);
             }
           }),
           new MenuOption({
             label: "Light",
             icon: "",
-            action: () => {
-              execAsync(["darkman", "set", "light"]).catch(console.error);
-            }
-          }),
-          new MenuOption({
-            label: "Auto",
-            action: () => {
-              // TODO
-              // execAsync(["darkman", "toggle"]).catch(console.error);
+            action: async () => {
+              // await execAsync(["darkman", "set", "light"]).catch(console.error);
             }
           }),
         ],
@@ -83,18 +81,26 @@ const MENU_OPTIONS: Array<MenuOption> = [
         submenu: [
           new MenuOption({
             label: "Auto",
-            action: () => {
-              // TODO
+            action: async () => {
+              await execAsync(["scripts/set_color.sh", "auto"]);
+            },
+            checkedCondition: async () => {
+              const forceColor = await execAsync(["scripts/get_config_value.sh", "force_color"]);
+              return forceColor.trim() === "false";
             }
           }),
           ...COLORS.map(color => new MenuOption({
             label: color[0].toUpperCase() + color.substring(1),
-            action: () => {
-              // TODO
+            action: async () => {
+              await execAsync(["scripts/set_color.sh", color]);
             },
             checkedCondition: async () => {
-              const currentColor = await execAsync(["scripts/get_config_value.sh", "color"]);
-              return currentColor.trim() === color;
+              const forceColor = await execAsync(["scripts/get_config_value.sh", "force_color"]);
+              if (forceColor.trim() === "true") {
+                const currentColor = await execAsync(["scripts/get_config_value.sh", "color"]);
+                return currentColor.trim() === color;
+              }
+              return false;
             }
           }))
         ],
@@ -109,8 +115,8 @@ const MENU_OPTIONS: Array<MenuOption> = [
   new MenuOption({
     label: "Power",
     icon: "",
-    action: () => {
-      execAsync(["scripts/cursor_middle.sh", "-plusX", "107"]).then(() => {
+    action: async () => {
+      await execAsync(["scripts/cursor_middle.sh", "-plusX", "107"]).then(() => {
         app.toggle_window("power-menu");
       }).catch(console.error);
     }

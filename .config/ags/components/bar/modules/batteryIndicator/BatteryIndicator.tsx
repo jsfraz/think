@@ -8,11 +8,11 @@ const battery = Battery.get_default();
 let [hasShownLowBatteryWarning, _setHasShownLowBatteryWarning] = createState(false);
 let [hasShownFullyChargedNotification, _setHasShownFullyChargedNotification] = createState(false);
 
-battery.connect("notify::percentage", () => {
+battery.connect("notify::percentage", async () => {
     const percentage = battery.percentage * 100;
 
     if (percentage <= 15 && !battery.charging && !hasShownLowBatteryWarning) {
-        notify({
+        await notify({
             summary: "Low Battery",
             body: `Battery level is at ${Math.round(percentage)}%`,
             iconName: "battery-low",
@@ -28,7 +28,7 @@ battery.connect("notify::percentage", () => {
 
     // Notify when fully charged
     if (percentage >= 100 && battery.charging && !hasShownFullyChargedNotification) {
-        notify({
+        await notify({
             summary: "Battery Fully Charged",
             body: "Battery is at 100%",
             iconName: "battery-full-charged",
