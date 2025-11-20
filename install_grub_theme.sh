@@ -24,8 +24,9 @@ sudo mkdir -p /boot/grub/themes
 sudo cp -r $REPO_DIR/arch /boot/grub/themes/fluent
 
 echo
-echo -e "\e[1;33mTo complete the installation, please set GRUB_THEME=\"/boot/grub/themes/fluent/theme.txt\" in /etc/default/grub\e[0m"
-echo -e "\e[1;33mand set GRUB_TERMINAL_OUTPUT=\"console\" to GRUB_TERMINAL_OUTPUT=\"gfxterm\".\e[0m"
+echo -e "\e[1;33mTo complete the installation, please set GRUB_THEME=\"/boot/grub/themes/fluent/theme.txt\" in /etc/default/grub,\e[0m"
+echo -e "\e[1;33mset GRUB_TERMINAL_OUTPUT=\"console\" to GRUB_TERMINAL_OUTPUT=\"gfxterm\".\e[0m"
+echo -e "\e[1;33mand add "splash" to GRUB_CMDLINE_LINUX_DEFAULT (for Plymouth support).\e[0m"
 echo
 echo "Press Enter to open /etc/default/grub for editing..."
 read

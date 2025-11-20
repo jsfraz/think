@@ -28,8 +28,17 @@ Rice for my shit Elitebook 840.
 - [Adwaita-colors](https://github.com/dpejoh/Adwaita-colors) (run `sudo ./morewaita.sh` after installing MoreWaita and Adwaita-colors)
 - [python-pillow](https://pypi.org/project/pillow/) package
 - [HyperFluent-GRUB-Theme (arch btw)](https://github.com/Coopydood/HyperFluent-GRUB-Theme) (installation below)
+- [plymouth-theme-arch-logo](https://aur.archlinux.org/packages/plymouth-theme-arch-logo) (installation below)
 
 ## swayfx
+
+To start `swayfx` on login, add this to `~/.bash_profile`:
+
+```bash
+if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+  exec sway
+fi
+```
 
 ### Linking config folder
 
@@ -143,6 +152,14 @@ To install the HyperFluent GRUB theme, run the following command:
 
 ```bash
 ./install_grub_theme.sh
+```
+
+## plymouth-theme-arch-logo
+
+To install the Plymouth Arch Logo theme, run the following command:
+
+```bash
+./install_plymouth_theme.sh
 ```
 
 <!-- yeah -->
