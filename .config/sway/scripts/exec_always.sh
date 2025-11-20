@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BACKGROUND_FILE="~/.config/sway/backgrounds/LightWaves-b4b59bda185758ebaa2735e4e9fc78a2f7277c64.webp"
+BACKGROUND_FILE="~/.config/sway/backgrounds/Road-aa422ff7289e3617adecf8df5349931de0992eab.webp"
 COLOR="auto"
 FORCE_COLOR=false
 MODE="auto"
@@ -44,7 +44,7 @@ swaymsg output "*" bg $BACKGROUND_FILE_EXPANDED fill
 
 # matugen
 if [ $FORCE_COLOR = true ]; then
-    matugen color hex $(~/.config/sway/scripts/get_color.py -hex $BACKGROUND_FILE_EXPANDED) -m $MODE
+    matugen color hex $(~/.config/sway/scripts/get_color.py -color2hex $COLOR) -m $MODE
 else
     matugen image $BACKGROUND_FILE_EXPANDED -m $MODE
 fi

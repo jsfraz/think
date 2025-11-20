@@ -29,6 +29,20 @@ def rgb_to_hex(rgb):
     """Converts RGB tuple to hex color code."""
     return "#{:02x}{:02x}{:02x}".format(rgb[0], rgb[1], rgb[2])
 
+def color_name_to_hex(color_name):
+    """Converts color name to hex code."""
+    color_map = {
+        "red": "#e74c3c",
+        "orange": "#e67e22",
+        "yellow": "#f39c12",
+        "green": "#27ae60",
+        "teal": "#16a085",
+        "blue": "#3498db",
+        "purple": "#9b59b6",
+        "pink": "#e91e63"
+    }
+    return color_map.get(color_name.lower(), "#808080")
+
 def rgb_to_color_name(rgb):
     """Converts RGB to color name."""
     r, g, b = rgb
@@ -65,30 +79,40 @@ def rgb_to_color_name(rgb):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python get_color.py [-hex] <image_path>", file=sys.stderr)
+        print("Usage: python get_color.py [-hex] [-color2hex] <image_path|color_name>", file=sys.stderr)
         sys.exit(1)
     
     hex_output = False
-    image_path = None
+    color2hex_mode = False
+    target = None
     
     # Parse arguments
-    if sys.argv[1] == "-hex":
-        hex_output = True
-        if len(sys.argv) != 3:
-            print("Usage: python get_color.py [-hex] <image_path>", file=sys.stderr)
-            sys.exit(1)
-        image_path = sys.argv[2]
-    else:
-        image_path = sys.argv[1]
+    for i in range(1, len(sys.argv)):
+        if sys.argv[i] == "-hex":
+            hex_output = True
+        elif sys.argv[i] == "-color2hex":
+            color2hex_mode = True
+        else:
+            target = sys.argv[i]
+    
+    if not target:
+        print("Usage: python get_color.py [-hex] [-color2hex] <image_path|color_name>", file=sys.stderr)
+        sys.exit(1)
     
     try:
-        dominant_rgb = get_dominant_color(image_path)
-        
-        if hex_output:
-            print(rgb_to_hex(dominant_rgb))
+        if color2hex_mode:
+            # Convert color name to hex
+            hex_code = color_name_to_hex(target)
+            print(hex_code)
         else:
-            color_name = rgb_to_color_name(dominant_rgb)
-            print(color_name)
+            # Get dominant color from image
+            dominant_rgb = get_dominant_color(target)
+            
+            if hex_output:
+                print(rgb_to_hex(dominant_rgb))
+            else:
+                color_name = rgb_to_color_name(dominant_rgb)
+                print(color_name)
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
