@@ -46,13 +46,6 @@ gsettings set org.gnome.desktop.interface icon-theme "Adwaita-${COLOR}"
 # Set background image
 swaymsg output "*" bg $BACKGROUND_FILE_EXPANDED fill
 
-# matugen
-if [ $FORCE_COLOR = true ]; then
-    matugen color hex $(~/.config/sway/scripts/get_color.py -color2hex $COLOR) -m $MODE
-else
-    matugen image $BACKGROUND_FILE_EXPANDED -m $MODE
-fi
-
 # ags
 ASTAL_BATTERY_DIR=$(dirname $(find /usr -name "*AstalBattery*.typelib" 2>/dev/null))
 export GI_TYPELIB_PATH=$ASTAL_BATTERY_DIR:$GI_TYPELIB_PATH

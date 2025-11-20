@@ -14,3 +14,7 @@ block_postfix = "*>"
 [templates.ags]
 input_path = "~/.config/matugen/templates/ags.scss"
 output_path = "~/.config/ags/colors.scss"
+
+[templates.sway]
+input_path = "~/.config/matugen/templates/sway.conf"
+output_path = '~/.config/sway/colors.conf'

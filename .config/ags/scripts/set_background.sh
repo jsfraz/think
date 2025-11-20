@@ -30,4 +30,7 @@ FORCE_MODE=$(jq -r '.force_mode' ~/.config/sway/config.json)
 jq ".background = \"$BACKGROUND_FILE\" | .mode = \"$MODE\" | .force_mode = \"$FORCE_MODE\" | .color = \"$COLOR\" | .force_color = \"$FORCE_COLOR\"" ~/.config/sway/config.json > ~/.config/sway/config.json.tmp && \
 mv ~/.config/sway/config.json.tmp ~/.config/sway/config.json
 
+# matugen
+~/.config/sway/scripts/matugen.sh
+
 swaymsg reload

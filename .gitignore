@@ -6,3 +6,4 @@ all-gnome-backgrounds/
 HyperFluent-GRUB-Theme/
 .config/sway/backgrounds/
 .config/sway/config.json
+.config/sway/colors.conf

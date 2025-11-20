@@ -10,6 +10,9 @@ set $term foot
 # Application launcher
 set $menu rofi -show drun
 
+# Color schema
+include colors.conf
+
 ### Swayfx
 corner_radius 15
 
