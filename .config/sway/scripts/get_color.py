@@ -25,6 +25,10 @@ def get_dominant_color(image_path):
     most_common = Counter(pixels).most_common(1)[0][0]
     return most_common
 
+def rgb_to_hex(rgb):
+    """Converts RGB tuple to hex color code."""
+    return "#{:02x}{:02x}{:02x}".format(rgb[0], rgb[1], rgb[2])
+
 def rgb_to_color_name(rgb):
     """Converts RGB to color name."""
     r, g, b = rgb
@@ -60,16 +64,31 @@ def rgb_to_color_name(rgb):
         return "blue"  # Fallback
 
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: python get_color.py <image_path>", file=sys.stderr)
+    if len(sys.argv) < 2:
+        print("Usage: python get_color.py [-hex] <image_path>", file=sys.stderr)
         sys.exit(1)
     
-    image_path = sys.argv[1]
+    hex_output = False
+    image_path = None
+    
+    # Parse arguments
+    if sys.argv[1] == "-hex":
+        hex_output = True
+        if len(sys.argv) != 3:
+            print("Usage: python get_color.py [-hex] <image_path>", file=sys.stderr)
+            sys.exit(1)
+        image_path = sys.argv[2]
+    else:
+        image_path = sys.argv[1]
     
     try:
         dominant_rgb = get_dominant_color(image_path)
-        color_name = rgb_to_color_name(dominant_rgb)
-        print(color_name)
+        
+        if hex_output:
+            print(rgb_to_hex(dominant_rgb))
+        else:
+            color_name = rgb_to_color_name(dominant_rgb)
+            print(color_name)
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
