@@ -27,6 +27,10 @@ else
     MODE=$(darkman get)
 fi  
 
+# stop ags
+killall -q gjs
+while pgrep -x gjs >/dev/null; do sleep 0.001; done
+
 # GTK theme
 if [ "$COLOR" == "blue" ]; then
     ORCHIS_THEME_NAME="Orchis-${MODE^}-Compact"
@@ -49,12 +53,9 @@ else
     matugen image $BACKGROUND_FILE_EXPANDED -m $MODE
 fi
 
-
 # ags
 ASTAL_BATTERY_DIR=$(dirname $(find /usr -name "*AstalBattery*.typelib" 2>/dev/null))
 export GI_TYPELIB_PATH=$ASTAL_BATTERY_DIR:$GI_TYPELIB_PATH
-killall -q gjs
-while pgrep -x gjs >/dev/null; do sleep 0.1; done
 ags run &
 
 # mako

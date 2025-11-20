@@ -171,7 +171,7 @@ function setupSubmenus(submenuOptions: Array<MenuOption>, gdkmonitor: Gdk.Monito
         {
           name: submenuName,
           parentWindowName: effectiveParentWindowName,
-          plusMarginLeft: marginLeft == 0 ? (SUBMENU_MARGIN_LEFT + 1) : (SUBMENU_MARGIN_LEFT * 2 + 1 + marginLeft),
+          plusMarginLeft: marginLeft == 0 ? (SUBMENU_MARGIN_LEFT + 2) : (SUBMENU_MARGIN_LEFT * 2 + 3 + marginLeft),
           plusMarginTop: SUBMENU_MARGIN_TOP + totalTopMargin
         }
       )

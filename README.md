@@ -18,7 +18,7 @@ Rice for my shit Elitebook 840.
 - [mako](https://github.com/emersion/mako)
 - [jq](https://github.com/jqlang/jq)
 - [ydotool](https://github.com/ReimuNotMoe/ydotool)
-# TODO change
+<!-- TODO change system monitor -->
 - [gnome-system-monitor](https://gitlab.gnome.org/GNOME/gnome-system-monitor)
 - [zenity-gtk3](https://aur.archlinux.org/packages/zenity-gtk3) (or [zenity](https://gitlab.gnome.org/GNOME/zenity) if not available)
 - [darkman](https://gitlab.com/WhyNotHugo/darkman)
@@ -75,9 +75,8 @@ To run `ags`, you need to generate SCSS using `matugen`:
 ```bash
 matugen image <image_path> -m <dark|light>
 # or using this rice background config
-# TODO -m flag
 BACKGROUND_FILE=$(jq -r '.background' ~/.config/sway/config.json)
-matugen image $BACKGROUND_FILE
+matugen image $BACKGROUND_FILE -m <dark|light>
 ```
 
 ### Starting manually
