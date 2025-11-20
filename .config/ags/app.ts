@@ -55,21 +55,41 @@ const MENU_OPTIONS: Array<MenuOption> = [
           new MenuOption({
             label: "Auto",
             action: async () => {
-              // TODO
+              await execAsync(["scripts/set_mode.sh", "auto"]);
+            },
+            checkedCondition: async () => {
+              const forceMode = await execAsync(["scripts/get_config_value.sh", "force_mode"]);
+              return forceMode.trim() === "false";
             }
           }),
           new MenuOption({
             label: "Dark",
             icon: "",
             action: async () => {
-              // await execAsync(["darkman", "set", "dark"]).catch(console.error);
+              await execAsync(["scripts/set_mode.sh", "dark"]);
+            },
+            checkedCondition: async () => {
+              const forceMode = await execAsync(["scripts/get_config_value.sh", "force_mode"]);
+              if (forceMode.trim() === "true") {
+                const currentMode = await execAsync(["scripts/get_config_value.sh", "mode"]);
+                return currentMode.trim() === "dark";
+              }
+              return false;
             }
           }),
           new MenuOption({
             label: "Light",
             icon: "",
             action: async () => {
-              // await execAsync(["darkman", "set", "light"]).catch(console.error);
+              await execAsync(["scripts/set_mode.sh", "light"]);
+            },
+            checkedCondition: async () => {
+              const forceMode = await execAsync(["scripts/get_config_value.sh", "force_mode"]);
+              if (forceMode.trim() === "true") {
+                const currentMode = await execAsync(["scripts/get_config_value.sh", "mode"]);
+                return currentMode.trim() === "light";
+              }
+              return false;
             }
           }),
         ],

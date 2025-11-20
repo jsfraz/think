@@ -13,13 +13,13 @@ if [ -z "$BACKGROUND_FILE" ]; then
 fi
 
 # Create or update ~/.config/sway/config.json with background path
-COLOR=""
+COLOR="auto"
 FORCE_COLOR=false
-MODE=$(darkman get)
+MODE="auto"
 FORCE_MODE=false
 
 if [ ! -f ~/.config/sway/config.json ]; then
-    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: "'$FORCE_MODE'", color: "'$COLOR'", force_color: "'$FORCE_COLOR'"}' > ~/.config/sway/config.json
+    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR'}' > ~/.config/sway/config.json
 fi
 
 COLOR=$(jq -r '.color' ~/.config/sway/config.json)
