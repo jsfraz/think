@@ -6,7 +6,7 @@ set $down j
 set $up k
 set $right l
 # Terminal emulator
-set $term foot
+set $term alacritty
 # Application launcher
 set $menu rofi -show drun
 
@@ -15,6 +15,14 @@ include colors.conf
 
 ### Swayfx
 corner_radius 15
+
+# alacritty blur
+for_window [app_id="Alacritty"] {
+    blur enable;
+    blur_ignore_transparent enable;
+    blur_passes 2;
+    blur_radius 2;
+} 
 
 # ags blur
 layer_effects "gtk4-layer-shell" {
@@ -28,7 +36,9 @@ smart_borders enable
 smart_gaps disable
 
 ### Floating windows
-for_window [app_id="zenity"] floating enable; 
+for_window [app_id="zenity"] {
+    floating enable;
+} 
 
 ### Autostart
 exec ~/.config/sway/scripts/exec.sh

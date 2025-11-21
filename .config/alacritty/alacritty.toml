@@ -1,0 +1,21 @@
+[general]
+import = ["colors.toml"]
+
+[window]
+dimensions = { columns = 80, lines = 24 }
+opacity = 0.66
+# decorations_theme_variant = "Dark"
+
+[font]
+normal = { family = "FiraCode Nerd Font", style = "Mono" }
+
+[mouse]
+    bindings = [
+        { mouse = "Right", action = "Copy" },
+    ]
+
+[keyboard]
+bindings = [
+   { key = "T", mods = "Control", action = "SpawnNewInstance" }
+]
+

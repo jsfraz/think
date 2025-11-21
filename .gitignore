@@ -1,9 +1,12 @@
 # matugen
 .config/ags/colors.scss
 
-# Backgrounds and config
+# sway backgrounds and config
 all-gnome-backgrounds/
 HyperFluent-GRUB-Theme/
 .config/sway/backgrounds/
 .config/sway/config.json
 .config/sway/colors.conf
+
+# alacritty
+.config/alacritty/colors.toml

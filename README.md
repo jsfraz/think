@@ -29,6 +29,7 @@ Rice for my shit Elitebook 840.
 - [python-pillow](https://pypi.org/project/pillow/) package
 - [HyperFluent-GRUB-Theme (arch btw)](https://github.com/Coopydood/HyperFluent-GRUB-Theme) (installation below)
 - [plymouth-theme-arch-logo](https://aur.archlinux.org/packages/plymouth-theme-arch-logo) (installation below)
+- [alacritty](https://github.com/alacritty/alacritty)
 
 ## swayfx
 
@@ -57,6 +58,14 @@ Download all the [GOOD](https://zebreus.github.io/all-gnome-backgrounds/) backgr
 ## matugen
 
 `matugen` is used to generate SCSS files for other programs based on the current background image.
+
+## alacritty
+
+### Linking config folders
+
+```bash
+ln -sf $PWD/.config/alacritty ~/.config/alacritty
+```
 
 ## ags
 
