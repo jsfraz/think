@@ -27,7 +27,7 @@ const MENU_OPTIONS: Array<MenuOption> = [
     label: "System Monitor",
     icon: "󰓅",
     action: async () => {
-      await execAsync(["gnome-system-monitor"]).catch(console.error);
+      await execAsync(["alacritty", "-T", "btop++", "-e", "btop"]).catch(console.error);
     }
   }),
   new MenuOption({

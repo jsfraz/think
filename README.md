@@ -18,8 +18,7 @@ Rice for my shit Elitebook 840.
 - [mako](https://github.com/emersion/mako)
 - [jq](https://github.com/jqlang/jq)
 - [ydotool](https://github.com/ReimuNotMoe/ydotool)
-<!-- TODO change system monitor -->
-- [gnome-system-monitor](https://gitlab.gnome.org/GNOME/gnome-system-monitor)
+- [btop](https://github.com/aristocratos/btop)
 - [zenity-gtk3](https://aur.archlinux.org/packages/zenity-gtk3) (or [zenity](https://gitlab.gnome.org/GNOME/zenity) if not available)
 - [darkman](https://gitlab.com/WhyNotHugo/darkman)
 - [nemo](https://github.com/linuxmint/nemo)
@@ -91,6 +90,10 @@ if [ ! "$(tty)" = "/dev/tty1" ]; then
   fastfetch
 fi
 ```
+
+## btop
+
+After generating theme using `matugen`, choose it from `btop` settings.
 
 ## ags
 
