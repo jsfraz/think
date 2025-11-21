@@ -2,9 +2,7 @@
 import = ["colors.toml"]
 
 [window]
-dimensions = { columns = 80, lines = 24 }
-opacity = 0.66
-# decorations_theme_variant = "Dark"
+opacity = 0.5
 
 [font]
 normal = { family = "FiraCode Nerd Font", style = "Mono" }
