@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BACKGROUND_FILE="~/.config/sway/backgrounds/Road-aa422ff7289e3617adecf8df5349931de0992eab.webp"
+BACKGROUND_FILE="~/.config/sway/backgrounds/LightWaves-b4b59bda185758ebaa2735e4e9fc78a2f7277c64.webp"
 COLOR="auto"
 FORCE_COLOR=false
 MODE="auto"

@@ -31,6 +31,7 @@ Rice for my shit Elitebook 840.
 - [plymouth-theme-arch-logo](https://aur.archlinux.org/packages/plymouth-theme-arch-logo) (installation below)
 - [alacritty](https://github.com/alacritty/alacritty)
 - [starship](https://github.com/starship/starship)
+- [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 
 ## swayfx
 
@@ -60,12 +61,35 @@ Download all the [GOOD](https://zebreus.github.io/all-gnome-backgrounds/) backgr
 
 `matugen` is used to generate SCSS files for other programs based on the current background image.
 
+### Generating color schemes manually
+
+To run some program you need to generate color schemes using `matugen`:
+
+```bash
+matugen image <image_path> -m <dark|light>
+# or using this rice background config
+BACKGROUND_FILE=$(jq -r '.background' ~/.config/sway/config.json)
+matugen image $BACKGROUND_FILE -m <dark|light>
+```
+
 ## alacritty
 
 ### Linking config folders
 
 ```bash
 ln -sf $PWD/.config/alacritty ~/.config/alacritty
+```
+
+## fastfetch
+
+To start `fastfetch` when opening terminal, add this to `~/.bashrc`:
+
+```bash
+if [ ! "$(tty)" = "/dev/tty1" ]; then
+  clear
+  echo
+  fastfetch
+fi
 ```
 
 ## ags
@@ -86,17 +110,6 @@ I've created a [runcat](https://github.com/win0err/gnome-runcat)-like icon on th
 
 ```bash
 ./install_runcat_icons.sh
-```
-
-### Generating SCSS manually
-
-To run `ags`, you need to generate SCSS using `matugen`:
-
-```bash
-matugen image <image_path> -m <dark|light>
-# or using this rice background config
-BACKGROUND_FILE=$(jq -r '.background' ~/.config/sway/config.json)
-matugen image $BACKGROUND_FILE -m <dark|light>
 ```
 
 ### Starting manually
