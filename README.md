@@ -30,6 +30,7 @@ Rice for my shit Elitebook 840.
 - [HyperFluent-GRUB-Theme (arch btw)](https://github.com/Coopydood/HyperFluent-GRUB-Theme) (installation below)
 - [plymouth-theme-arch-logo](https://aur.archlinux.org/packages/plymouth-theme-arch-logo) (installation below)
 - [alacritty](https://github.com/alacritty/alacritty)
+- [starship](https://github.com/starship/starship)
 
 ## swayfx
 
