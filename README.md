@@ -95,6 +95,14 @@ fi
 
 After generating theme using `matugen`, choose it from `btop` settings.
 
+## rofi
+
+### Linking config folders
+
+```bash
+ln -sf $PWD/.config/rofi ~/.config/rofi
+```
+
 ## ags
 
 > [!NOTE]

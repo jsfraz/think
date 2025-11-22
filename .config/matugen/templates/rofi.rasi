@@ -1,0 +1,6 @@
+* {
+    background: {{colors.primary_container.default.hex}}50;
+    background2: {{colors.primary_container.default.hex}}80;
+    foreground: {{colors.on_primary_container.default.hex}};
+    selected: {{colors.on_secondary_container.default.hex}}40;
+}

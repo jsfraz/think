@@ -8,7 +8,7 @@ set $right l
 # Terminal emulator
 set $term alacritty
 # Application launcher
-set $menu rofi -show drun
+set $menu rofi -show drun -theme ~/.config/rofi/rofi.rasi -show-icons -icon-theme $(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
 
 # Color schema
 include colors.conf
@@ -22,7 +22,13 @@ for_window [app_id="Alacritty"] {
     blur_ignore_transparent enable;
     blur_passes 2;
     blur_radius 2;
-} 
+}
+
+# rofi blur
+layer_effects "rofi" {
+    blur enable;
+    blur_ignore_transparent enable;
+}
 
 # ags blur
 layer_effects "gtk4-layer-shell" {
@@ -41,7 +47,7 @@ for_window [app_id="zenity"] {
 } 
 
 ### Autostart
-exec ~/.config/sway/scripts/exec.sh
+exec ~/.config/sway/scripts/matugen.sh && ~/.config/sway/scripts/exec.sh
 exec_always ~/.config/sway/scripts/exec_always.sh
 
 ### Idle configuration

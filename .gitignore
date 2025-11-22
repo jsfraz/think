@@ -10,3 +10,6 @@ HyperFluent-GRUB-Theme/
 
 # alacritty
 .config/alacritty/colors.toml
+
+# rofi
+.config/rofi/colors.rasi
