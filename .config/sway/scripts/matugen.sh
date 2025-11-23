@@ -17,8 +17,4 @@ else
 fi 
 
 # matugen
-if [ $FORCE_COLOR = true ]; then
-    matugen color hex $(~/.config/sway/scripts/get_color.py -color2hex $COLOR) -m $MODE
-else
-    matugen image $BACKGROUND_FILE_EXPANDED -m $MODE
-fi
+matugen color hex $(~/.config/sway/scripts/get_color.py -color2hex $COLOR) -m $MODE

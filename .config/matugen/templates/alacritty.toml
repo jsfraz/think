@@ -1,2 +1,2 @@
 [colors.primary]
-background = '{{colors.on_primary_fixed.default.hex}}'
+background = '{{colors.primary_container.default.hex}}'

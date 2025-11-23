@@ -1,6 +1,8 @@
 # elite
 
-Rice for my shit Elitebook 840.
+[![wakatime](https://wakatime.com/badge/user/992c0ad1-7dae-4115-9198-1ba533452d32/project/2ddec85d-539d-4e8c-977e-cbe926a8b17d.svg)](https://wakatime.com/badge/user/992c0ad1-7dae-4115-9198-1ba533452d32/project/2ddec85d-539d-4e8c-977e-cbe926a8b17d)
+
+Rice for my shit Elitebook 840 G1.
 
 # TODO screenshot
 

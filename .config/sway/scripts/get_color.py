@@ -32,14 +32,14 @@ def rgb_to_hex(rgb):
 def color_name_to_hex(color_name):
     """Converts color name to hex code."""
     color_map = {
-        "red": "#e74c3c",
-        "orange": "#e67e22",
-        "yellow": "#f39c12",
-        "green": "#27ae60",
-        "teal": "#16a085",
-        "blue": "#3498db",
-        "purple": "#9b59b6",
-        "pink": "#e91e63"
+        "red": "#ff1919",
+        "orange": "#e59400",
+        "yellow": "#e5e500",
+        "green": "#198c19",
+        "teal": "#007373",
+        "blue": "#3232ff",
+        "purple": "#8c198c",
+        "pink": "#ff19ff"
     }
     return color_map.get(color_name.lower(), "#808080")
 

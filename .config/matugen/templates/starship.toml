@@ -10,7 +10,7 @@ $character"""
 palette = 'colors'
 
 [palettes.colors]
-primary = '{{colors.on_primary_fixed_variant.default.hex}}'
+primary = '{{colors.source_color.default.hex}}'
 
 [aws]
 symbol = "  "

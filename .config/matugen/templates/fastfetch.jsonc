@@ -3,8 +3,8 @@
   "logo": {
     "type": "small",
     "color": {
-      "1": "{{colors.on_primary_fixed_variant.default.hex}}",
-      "2": "{{colors.on_primary_fixed_variant.default.hex}}"
+      "1": "{{colors.source_color.default.hex}}",
+      "2": "{{colors.source_color.default.hex}}"
     },
     "padding": {
       "top": 1,
@@ -20,8 +20,8 @@
       "type": "icon"
     },
     "color": {
-      "keys": "{{colors.on_primary_fixed_variant.default.hex}}",
-      "title": "{{colors.on_primary_fixed_variant.default.hex}}"
+      "keys": "{{colors.source_color.default.hex}}",
+      "title": "{{colors.source_color.default.hex}}"
     }
   },
   "modules": [
