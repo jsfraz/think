@@ -36,6 +36,12 @@ layer_effects "gtk4-layer-shell" {
     blur_ignore_transparent enable;
 }
 
+# notificaions blur
+layer_effects "notifications" {
+    blur enable;
+    blur_ignore_transparent enable;
+}
+
 ### Gaps and borders
 gaps inner 10
 smart_borders enable

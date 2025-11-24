@@ -32,7 +32,7 @@ def rgb_to_hex(rgb):
 def color_name_to_hex(color_name):
     """Converts color name to hex code."""
     color_map = {
-        "red": "#ff1919",
+        "red": "#cc0000",
         "orange": "#e59400",
         "yellow": "#e5e500",
         "green": "#198c19",

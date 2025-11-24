@@ -44,7 +44,7 @@ if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
 fi
 ```
 
-### Linking config folder
+### Linking config
 
 ```bash
 ln -sf $PWD/.config/sway ~/.config/sway
@@ -75,7 +75,7 @@ matugen image $BACKGROUND_FILE -m <dark|light>
 
 ## alacritty
 
-### Linking config folders
+### Linking config
 
 ```bash
 ln -sf $PWD/.config/alacritty ~/.config/alacritty
@@ -99,7 +99,7 @@ After generating theme using `matugen`, choose it from `btop` settings.
 
 ## rofi
 
-### Linking config folders
+### Linking config
 
 ```bash
 ln -sf $PWD/.config/rofi ~/.config/rofi
@@ -111,7 +111,7 @@ ln -sf $PWD/.config/rofi ~/.config/rofi
 > If you run into this error: `can not initialize layer shell on window: layer shell not supported
 tip: running from an xwayland terminal can cause this, for example VsCode` you need to run this in a native wayland terminal like `alacritty` or `foot`.
 
-### Linking config folders
+### Linking config
 
 ```bash
 ln -sf $PWD/.config/ags ~/.config/ags
@@ -168,7 +168,7 @@ sudo systemctl start ydotool.service
 
 To manage dark/light themes automatically based on the time of day.
 
-### Linking config folders
+### Linking config
 
 ```bash
 ln -sf $PWD/.config/darkman ~/.config/darkman

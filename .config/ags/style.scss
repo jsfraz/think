@@ -9,7 +9,6 @@
 $glass-base: $primary_container;           // Base glass color
 $glass-base-menu: $primary_container;   // Base glass color for menus
 $glass-accent: $primary;          // Accent color
-$glass-border: $outline;          // Border color
 $text-primary: $secondary_fixed;       // Primary text
 $text-shadow: $shadow;            // Text shadow
 $hover-overlay: $surface;      // Hover effect color
@@ -20,8 +19,8 @@ $hover-overlay: $surface;      // Hover effect color
       rgba($glass-base, 0.2) 0%,
       rgba($glass-base, 0.1) 50%,
       rgba($glass-base, 0.15) 100%);
-  border: 1px solid rgba($glass-border, 0.05);
-  border-top-color: rgba($glass-border, 0.1);
+  border: 1px solid rgba($glass-base, 0.25);
+  border-top-color: rgba($glass-base, 0.5);
   border-radius: 28px;
 }
 
@@ -38,8 +37,8 @@ $hover-overlay: $surface;      // Hover effect color
       rgba($glass-base-menu, 0.2) 0%,
       rgba($glass-base-menu, 0.1) 50%,
       rgba($glass-base-menu, 0.15) 100%);
-  border: 1px solid rgba($glass-border, 0.05);
-  border-top-color: rgba($glass-border, 0.1);
+  border: 1px solid rgba($glass-base, 0.35);
+  border-top-color: rgba($glass-base, 0.5);
   border-radius: 15px;
 }
 
