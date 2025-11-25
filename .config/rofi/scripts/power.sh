@@ -47,6 +47,7 @@ case ${chosen} in
     $lock)
         ;;
     $suspend)
+        # TODO swaylock
         systemctl suspend
         ;;
 esac

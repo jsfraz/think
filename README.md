@@ -45,6 +45,18 @@ if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
 fi
 ```
 
+### [Autologin](https://wiki.archlinux.org/title/Getty#Automatic_login_to_virtual_console)
+
+Create a drop-in file `/etc/systemd/system/getty@tty1.service.d/autologin.conf` for `getty@tty1.service`:
+
+```service
+[Service]
+ExecStart=
+ExecStart=-/sbin/agetty --noreset --noclear --autologin username - ${TERM}
+```
+
+Make sure to replace `username` with your actual username.
+
 ### Linking config
 
 ```bash

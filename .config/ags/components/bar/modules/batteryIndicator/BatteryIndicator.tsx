@@ -8,6 +8,7 @@ const battery = Battery.get_default();
 let [hasShownLowBatteryWarning, _setHasShownLowBatteryWarning] = createState(false);
 let [hasShownFullyChargedNotification, _setHasShownFullyChargedNotification] = createState(false);
 
+// FIXME doesn't work
 battery.connect("notify::percentage", async () => {
     const percentage = battery.percentage * 100;
 
