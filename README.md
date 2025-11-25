@@ -19,7 +19,6 @@ Rice for my shit Elitebook 840 G1.
 - [libnotify](https://gitlab.gnome.org/GNOME/libnotify)
 - [mako](https://github.com/emersion/mako)
 - [jq](https://github.com/jqlang/jq)
-- [ydotool](https://github.com/ReimuNotMoe/ydotool)
 - [btop](https://github.com/aristocratos/btop) (recommended)
 - [zenity-gtk3](https://aur.archlinux.org/packages/zenity-gtk3) (or [zenity](https://gitlab.gnome.org/GNOME/zenity) if not available)
 - [darkman](https://gitlab.com/WhyNotHugo/darkman)
@@ -119,14 +118,6 @@ tip: running from an xwayland terminal can cause this, for example VsCode` you n
 ln -sf $PWD/.config/ags ~/.config/ags
 ```
 
-### Installing runcat icons from original repo
-
-I've created a [runcat](https://github.com/win0err/gnome-runcat)-like icon on the sidebar. You can download the icons from the original repo in order to run `ags` without errors:
-
-```bash
-./install_runcat_icons.sh
-```
-
 ### Starting manually
 
 When starting `ags` manually, make sure the `GI_TYPELIB_PATH` includes the path to `AstalBattery` typelib:
@@ -137,34 +128,6 @@ ags run
 ```
 
 This is done automatically when using provided `sway` config.
-
-## ydotool
-
-You need to run `ydotool` deamon as root to use cursor positioning script. Create a systemd service file at `/etc/systemd/system/ydotool.service` with
-
-```bash
-[Unit]
-Description=Starts ydotoold service
-
-[Service]
-Type=simple
-Restart=always
-ExecStart=ydotoold --socket-path="/tmp/.ydotool_socket" --socket-own="1000:1000"
-ExecReload=kill -HUP $MAINPID
-KillMode=process
-TimeoutSec=180
-
-[Install]
-WantedBy=default.target
-```
-
-Then enable and start the service:
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable ydotool.service
-sudo systemctl start ydotool.service
-```
 
 ## darkman
 
@@ -199,6 +162,10 @@ To install the Plymouth Arch Logo theme, run the following command:
 ```bash
 ./install_plymouth_theme.sh
 ```
+
+## Credits
+
+Inspired by [Ateon](https://github.com/Youwes09/Ateon) ([reddit](https://www.reddit.com/r/unixporn/comments/1o0yhvq/hyprland_my_nefarious_system/)), [Freosan](https://github.com/namishh/crystal/tree/freosan) ([reddit](https://www.reddit.com/r/unixporn/comments/1as3fw8/swayfx_freosan/)) and [gnome-runcat](https://github.com/win0err/gnome-runcat). Some assets/code borrowed from Ateon, gnome-runcat, [adi1090x/rofi](https://github.com/adi1090x/rofi/), [InioX/matugen-themes](https://github.com/InioX/matugen-themes).
 
 <!-- yeah -->
 <p align="center">
