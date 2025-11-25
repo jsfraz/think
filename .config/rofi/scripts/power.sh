@@ -4,7 +4,7 @@
 ## Github : @adi1090x
 
 # Theme file
-theme="$HOME/.config/rofi/settings.rasi"
+theme="$HOME/.config/rofi/power.rasi"
 # Info variables
 name=$(grep ^NAME= /etc/os-release | cut -d= -f2- | tr -d '"')
 name_icon=""
@@ -16,8 +16,10 @@ pretty_name="$name_icon $(grep ^PRETTY_NAME= /etc/os-release | cut -d= -f2- | tr
 host="$USER@$HOSTNAME"
 uptime="`uptime -p | sed -e 's/up //g'`"
 # Option buttons
-shutdown=''
-reboot=''
+shutdown=""
+reboot=""
+lock=""
+suspend=""
 
 # rofi command
 rofi_cmd() {
@@ -30,7 +32,7 @@ rofi_cmd() {
 
 # Run rofi and pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$shutdown\n$reboot\ntest" | rofi_cmd
+	echo -e "$shutdown\n$reboot\n$lock\n$suspend" | rofi_cmd
 }
 
 # Run rofi and wait for a choice
@@ -42,8 +44,10 @@ case ${chosen} in
     $reboot)
 		systemctl reboot
         ;;
-	test)
-		notify-send "Test option selected"
-		;;
+    $lock)
+        ;;
+    $suspend)
+        systemctl suspend
+        ;;
 esac
 

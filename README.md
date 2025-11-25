@@ -20,10 +20,10 @@ Rice for my shit Elitebook 840 G1.
 - [mako](https://github.com/emersion/mako)
 - [jq](https://github.com/jqlang/jq)
 - [ydotool](https://github.com/ReimuNotMoe/ydotool)
-- [btop](https://github.com/aristocratos/btop)
+- [btop](https://github.com/aristocratos/btop) (recommended)
 - [zenity-gtk3](https://aur.archlinux.org/packages/zenity-gtk3) (or [zenity](https://gitlab.gnome.org/GNOME/zenity) if not available)
 - [darkman](https://gitlab.com/WhyNotHugo/darkman)
-- [nemo](https://github.com/linuxmint/nemo)
+- [nemo](https://github.com/linuxmint/nemo) (recommended)
 - [Orchis-theme](https://github.com/vinceliuice/Orchis-theme) (`./install.sh -t all -s compact`)
 - [MoreWaita](https://github.com/somepaulo/MoreWaita)
 - [Adwaita-colors](https://github.com/dpejoh/Adwaita-colors) (run `sudo ./morewaita.sh` after installing MoreWaita and Adwaita-colors)
@@ -33,6 +33,8 @@ Rice for my shit Elitebook 840 G1.
 - [alacritty](https://github.com/alacritty/alacritty)
 - [starship](https://github.com/starship/starship)
 - [fastfetch](https://github.com/fastfetch-cli/fastfetch)
+- [swaylock](https://github.com/swaywm/swaylock)
+- [swayidle](https://github.com/swaywm/swayidle)
 
 ## swayfx
 

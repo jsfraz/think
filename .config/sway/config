@@ -7,9 +7,11 @@ set $up k
 set $right l
 # Terminal emulator
 set $term alacritty
-# Application launcher
+# rofi
+set $power ~/.config/rofi/scripts/power.sh
+set $settings ~/.config/rofi/scripts/settings.sh
 set $menu rofi -show drun -theme ~/.config/rofi/launcher.rasi -show-icons -icon-theme $(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
-set $settings_menu ~/.config/rofi/scripts/settings.sh
+
 
 # Color schema
 include colors.conf
@@ -70,6 +72,10 @@ exec_always ~/.config/sway/scripts/exec_always.sh
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
+# TODO cmatrix fake screensaver or something
+# 10 minutes of inactivity: turn off the screen
+exec swayidle -w timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+
 ### Input
 
 input "type:touchpad" {
@@ -92,10 +98,13 @@ input "*" {
     # Kill focused window
     bindsym $mod+Shift+q kill
 
+    # Power menu
+    bindsym $mod+a exec $power
+    # Settings
+    bindsym $mod+s exec $settings
     # Launcher
     bindsym $mod+d exec $menu
-    # Settings
-    bindsym $mod+s exec $settings_menu
+    
     # Matugen
     bindsym $mod+Shift+m exec ~/.config/sway/scripts/matugen.sh && swaymsg reload
 
@@ -186,7 +195,7 @@ input "*" {
     bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    # bindsym $mod+a focus parent
 #
 # Scratchpad:
 #

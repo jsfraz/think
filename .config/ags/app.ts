@@ -1,7 +1,6 @@
 import app from "ags/gtk4/app"
 import style from "./style.scss"
 import Bar from "./components/bar/Bar"
-import PowerMenu from "./components/powerMenu/PowerMenu"
 import Menu from "./components/menu/menu"
 import { execAsync } from "ags/process"
 import { Gdk } from "ags/gtk4"
@@ -129,18 +128,6 @@ const MENU_OPTIONS: Array<MenuOption> = [
     ],
     parentWindowName: "main-menu"
   }),
-  new MenuOption({
-    isSeparator: true
-  }),
-  new MenuOption({
-    label: "Power",
-    icon: "",
-    action: async () => {
-      await execAsync(["scripts/cursor_middle.sh", "-plusX", "107"]).then(() => {
-        app.toggle_window("power-menu");
-      }).catch(console.error);
-    }
-  }),
 ];
 
 // Prepare submenus and return them as windows
@@ -188,7 +175,6 @@ app.start({
     // TODO validate monitors
 
     app.get_monitors().map(Bar);
-    app.get_monitors().map(PowerMenu);
     app.get_monitors().map((m) => Menu(m, MENU_OPTIONS, { plusMarginTop: SUBMENU_MARGIN_TOP, plusMarginLeft: SUBMENU_MARGIN_LEFT }));
     app.get_monitors().map((m) => {
       setupSubmenus(MENU_OPTIONS, m, "main-menu", 0, 0);

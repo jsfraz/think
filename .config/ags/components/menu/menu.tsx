@@ -61,7 +61,7 @@ export default function Menu(gdkmonitor: Gdk.Monitor, menuOptions: Array<MenuOpt
         return p ? p.get_width() + plusMarginLeft : plusMarginLeft;
       })}
       anchor={TOP | LEFT}
-      layer={Astal.Layer.OVERLAY}
+      layer={Astal.Layer.TOP}
       keymode={Astal.Keymode.ON_DEMAND}
       visible={visible}
       onShow={(self) => {
