@@ -8,7 +8,8 @@ set $right l
 # Terminal emulator
 set $term alacritty
 # Application launcher
-set $menu rofi -show drun -theme ~/.config/rofi/rofi.rasi -show-icons -icon-theme $(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
+set $menu rofi -show drun -theme ~/.config/rofi/launcher.rasi -show-icons -icon-theme $(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
+set $settings_menu ~/.config/rofi/scripts/settings.sh
 
 # Color schema
 include colors.conf
@@ -91,8 +92,12 @@ input "*" {
     # Kill focused window
     bindsym $mod+Shift+q kill
 
-    # Start your launcher
+    # Launcher
     bindsym $mod+d exec $menu
+    # Settings
+    bindsym $mod+s exec $settings_menu
+    # Matugen
+    bindsym $mod+Shift+m exec ~/.config/sway/scripts/matugen.sh && swaymsg reload
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
