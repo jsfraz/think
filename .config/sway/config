@@ -11,6 +11,9 @@ set $term alacritty
 set $power ~/.config/rofi/scripts/power.sh
 set $settings ~/.config/rofi/scripts/settings.sh
 set $menu rofi -show drun -theme ~/.config/rofi/launcher.rasi -show-icons -icon-theme $(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
+# Screensaver
+set $screensaver_timeout_seconds 300
+set $mouse_hide_timeout_milliseconds 300000
 
 
 # Color schema
@@ -53,6 +56,11 @@ smart_gaps disable
 ### Floating windows
 for_window [app_id="zenity"] {
     floating enable;
+}
+
+### Screensaver terminal fullscreen
+for_window [app_id="screensaver"] {
+    fullscreen enable;
 } 
 
 ### Autostart
@@ -72,9 +80,13 @@ exec_always ~/.config/sway/scripts/exec_always.sh
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
-# TODO cmatrix fake screensaver or something
-# 10 minutes of inactivity: turn off the screen
-exec swayidle -w timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+# Hide mouse cursor when idle
+seat * hide_cursor $mouse_hide_timeout_milliseconds
+# Start screensaver when idle
+# (restaring sway or killing and restarting swayidle will take effect on changed timeout)
+exec swayidle -w \
+    timeout $screensaver_timeout_seconds 'swaymsg "exec ~/.config/sway/scripts/screensaver.sh"' \
+    resume 'swaymsg "[app_id=screensaver] kill"'
 
 ### Input
 

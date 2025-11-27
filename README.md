@@ -34,6 +34,9 @@ Rice for my shit Elitebook 840 G1.
 - [fastfetch](https://github.com/fastfetch-cli/fastfetch)
 - [swaylock](https://github.com/swaywm/swaylock)
 - [swayidle](https://github.com/swaywm/swayidle)
+- [adobe-source-han-sans-jp-fonts](https://archlinux.org/packages/?name=adobe-source-han-sans-jp-fonts) (or any other japanese font of your choice)
+- [foot](https://codeberg.org/dnkl/foot)
+- [neo](https://github.com/st3w/neo)
 
 ## swayfx
 
