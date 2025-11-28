@@ -45,10 +45,12 @@ case ${chosen} in
 		systemctl reboot
         ;;
     $lock)
+        swaylock -f
         ;;
     $suspend)
-        # TODO swaylock
+        swaylock -f
         systemctl suspend
+        # TODO psmouse
         ;;
 esac
 

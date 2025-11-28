@@ -39,4 +39,4 @@ case ${COLOR} in
 esac
 
 # Start camtrix-like screensaver in foot terminal with ID "screensaver"
-foot -a screensaver --font="FiraCode Nerd Font Mono":size=14 neo-matrix -abF --colormode 256 -c $MATRIX_COLOR
+foot -a screensaver --font="FiraCode Nerd Font Mono":size=14 neo-matrix -aF --colormode 256 -c $MATRIX_COLOR
