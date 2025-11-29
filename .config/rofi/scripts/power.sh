@@ -45,10 +45,10 @@ case ${chosen} in
 		systemctl reboot
         ;;
     $lock)
-        swaylock -f
+        ~/.config/sway/scripts/lockscreen.sh
         ;;
     $suspend)
-        swaylock -f
+        ~/.config/sway/scripts/lockscreen.sh
         systemctl suspend
         # TODO psmouse
         ;;

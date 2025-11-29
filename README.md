@@ -32,7 +32,7 @@ Rice for my shit Elitebook 840 G1.
 - [alacritty](https://github.com/alacritty/alacritty)
 - [starship](https://github.com/starship/starship)
 - [fastfetch](https://github.com/fastfetch-cli/fastfetch)
-- [swaylock](https://github.com/swaywm/swaylock)
+- [swaylock-effects](https://github.com/mortie/swaylock-effects)
 - [swayidle](https://github.com/swaywm/swayidle)
 - [adobe-source-han-sans-jp-fonts](https://archlinux.org/packages/?name=adobe-source-han-sans-jp-fonts) (or any other japanese font of your choice)
 - [foot](https://codeberg.org/dnkl/foot)

@@ -14,7 +14,7 @@ set $menu rofi -show drun -theme ~/.config/rofi/launcher.rasi -show-icons -icon-
 # Screensaver
 set $screensaver_timeout_seconds 600
 set $mouse_hide_timeout_milliseconds 600000
-set $lock_timeout_seconds 900
+set $lock_timeout_seconds 1200
 
 
 # Color schema
@@ -76,7 +76,7 @@ seat * hide_cursor $mouse_hide_timeout_milliseconds
 exec swayidle -w \
         timeout $screensaver_timeout_seconds 'swaymsg "exec ~/.config/sway/scripts/screensaver.sh"' \
         resume 'swaymsg "[app_id=screensaver] kill"' \
-        timeout $lock_timeout_seconds 'swaymsg "output * power off" && swaymsg "[app_id=screensaver] kill" && swaylock -f' \
+        timeout $lock_timeout_seconds 'swaymsg "output * power off" && swaymsg "[app_id=screensaver] kill" && ~/.config/sway/scripts/lockscreen.sh' \
         resume 'swaymsg "output * power on"'
 
 ### Input
