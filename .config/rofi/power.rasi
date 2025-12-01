@@ -55,7 +55,7 @@ inputbar {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     0px;
+    padding:                     0 0 1px 0;
     border:                      0px;
     border-radius:               0px;
     border-color:                @selected;

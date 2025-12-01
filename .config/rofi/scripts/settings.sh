@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
-## Author : Aditya Shakya (adi1090x)
-## Github : @adi1090x
-
 # Theme file
-theme="$HOME/.config/rofi/settings.rasi"
+theme="$HOME/.config/rofi/multimenu.rasi"
 # Title
 settings_title=" Settings"
 # Option buttons
@@ -30,6 +27,9 @@ teal_color="Teal"
 yellow_color="Yellow"
 
 # rofi command
+# $1 - option1\noption2\noption3...
+# $2 - message
+# $3 - theme string ("listview {columns: 2; lines: 1;}")
 run_rofi() {
     echo -e "$1" | rofi -dmenu \
         -mesg "$2" \
@@ -38,21 +38,23 @@ run_rofi() {
 }
 
 # Run rofi and wait for a choice
-chosen="$(run_rofi "$appearence\n$network" "$settings_title")"
+chosen="$(run_rofi "$appearence\n$network" "$settings_title" "listview {columns: 2; lines: 1;}")"
 case ${chosen} in
     $appearence)
-        chosen_appearance="$(run_rofi "$background\n$mode\n$color" "$appearence")"
+        chosen_appearance="$(run_rofi "$background\n$mode\n$color" "$appearence" "listview {columns: 3; lines: 1;}")"
         case ${chosen_appearance} in
             $background)
                 ~/.config/rofi/scripts/set_background.sh
                 ;;
             $mode)
-                chosen_mode="$(run_rofi "$auto_mode\n$dark_mode\n$light_mode" "$mode")"
+                current_mode=$(~/.config/rofi/scripts/get_config_value.sh mode)
+                chosen_mode="$(run_rofi "$auto_mode\n$dark_mode\n$light_mode" "$mode (${current_mode^})" "listview {columns: 3; lines: 1;}")"
                 chosen_mode=$(echo "$chosen_mode" | sed 's/^.* //' | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
                 ~/.config/rofi/scripts/set_mode.sh $chosen_mode
                 ;;
             $color)
-                chosen_color="$(run_rofi "$auto_color\n$blue_color\n$green_color\n$orange_color\n$pink_color\n$purple_color\n$red_color\n$teal_color\n$yellow_color" "$color" "listview {columns: 3; lines: 3;}")"
+                current_color=$(~/.config/rofi/scripts/get_config_value.sh color)
+                chosen_color="$(run_rofi "$auto_color\n$blue_color\n$green_color\n$orange_color\n$pink_color\n$purple_color\n$red_color\n$teal_color\n$yellow_color" "$color (${current_color^})" "listview {columns: 3; lines: 3;}")"
                 chosen_color=$(echo "$chosen_color" | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
                 echo $chosen_color
                 ~/.config/rofi/scripts/set_color.sh $chosen_color

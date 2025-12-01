@@ -9,12 +9,12 @@ function DigitStack(index: number) {
     return (
         <stack
             class="digit-stack"
-            transitionDuration={250}
+            transitionDuration={200}
             transitionType={Gtk.StackTransitionType.SLIDE_UP_DOWN}
             $={(self) => (
                 <With value={currentTimeString}>
                     {(time) => {
-                        const str = time ?? "00:00";
+                        const str = time ?? "00:00:00";
                         self.visibleChildName = str[index] ?? "0";
                         return null;
                     }}
@@ -47,6 +47,10 @@ function TimeDisplay() {
             <box halign={Gtk.Align.CENTER}>
                 {DigitStack(3)}
                 {DigitStack(4)}
+            </box>
+            <box halign={Gtk.Align.CENTER}>
+                {DigitStack(6)}
+                {DigitStack(7)}
             </box>
         </box>
     );

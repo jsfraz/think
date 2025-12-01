@@ -1,12 +1,10 @@
 // Import specific component styles
 @use "components/bar/bar.scss";
-@use "components/menu/menu.scss";
 // Generated color palette from matugen
 @use "colors.scss" as *;
 
 // Define color variables based on matugen palette
 $glass-base: $primary_container; // Base glass color
-$glass-base-menu: $primary_container; // Base glass color for menus
 $glass-accent: $primary; // Accent color
 $text-shadow: $shadow; // Text shadow
 $hover-overlay: $surface; // Hover effect color
@@ -22,21 +20,6 @@ $hover-overlay: $surface; // Hover effect color
 // Glass text styling
 .glass-container image,
 .glass-container label,
-.glass-text {
-  color: $primary_fixed;
-  text-shadow: 0 1px 2px rgba($text-shadow, 0.3);
-}
-
-.glass-menu {
-  background: rgba($glass-base-menu, 0.1);
-  border: 1px solid rgba($glass-base-menu, 0.15);
-  border-top-color: rgba($glass-base-menu, 0.35);
-  border-radius: 15px;
-}
-
-// Glass text styling
-.glass-menu image,
-.glass-menu label,
 .glass-text {
   color: $primary_fixed;
   text-shadow: 0 1px 2px rgba($text-shadow, 0.3);

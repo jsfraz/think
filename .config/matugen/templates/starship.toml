@@ -1,5 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
-
+# TODO Battery level
 add_newline = true
 
 format = """

@@ -9,6 +9,7 @@ FORCE_MODE=false
 # Create ~/.config/sway/config.json with default background
 if [ ! -f ~/.config/sway/config.json ]; then
     jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR'}' > ~/.config/sway/config.json
+    ~/.config/sway/scripts/matugen.sh
 fi
 
 # Check if property name argument is provided

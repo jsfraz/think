@@ -3,8 +3,9 @@
 ## Author : Aditya Shakya (adi1090x)
 ## Github : @adi1090x
 
-# Theme file
+# Theme files
 theme="$HOME/.config/rofi/power.rasi"
+yes_no_theme="$HOME/.config/rofi/multimenu.rasi"
 # Info variables
 name=$(grep ^NAME= /etc/os-release | cut -d= -f2- | tr -d '"')
 name_icon=""
@@ -21,6 +22,9 @@ reboot=""
 lock=""
 suspend=""
 
+yes=" Yes"
+no=" No"
+
 # rofi command
 rofi_cmd() {
     rofi -dmenu \
@@ -35,16 +39,34 @@ run_rofi() {
 	echo -e "$shutdown\n$reboot\n$lock\n$suspend" | rofi_cmd
 }
 
+# Yes/no dialog
+# $1 - message
+# $2 - theme string ("listview {columns: 2; lines: 1;}")
+run_yes_no() {
+    echo -e "$yes\n$no" | rofi -dmenu \
+        -mesg "$1" \
+        -theme-str "$2" \
+        -theme $yes_no_theme
+}
+
 # Run rofi and wait for a choice
 chosen="$(run_rofi)"
 case ${chosen} in
     $shutdown)
-        # TODO confirm dialog
-		systemctl poweroff
+        yes_no="$(run_yes_no "Shutdown now?" "window {width: 20%;} listview {columns: 2; lines: 1;}")"
+        case ${yes_no} in
+            $yes)
+                systemctl poweroff
+                ;;
+        esac
         ;;
     $reboot)
-        # TODO confirm dialog
-		systemctl reboot
+        yes_no="$(run_yes_no "Reboot now?" "window {width: 20%;} listview {columns: 2; lines: 1;}")"
+        case ${yes_no} in
+            $yes)
+                systemctl reboot
+                ;;
+        esac
         ;;
     $lock)
         ~/.config/sway/scripts/lockscreen.sh

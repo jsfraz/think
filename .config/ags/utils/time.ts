@@ -1,13 +1,11 @@
 import { createPoll } from "ags/time";
 
-// State
-export const currentTime = createPoll(Date.now(), 60000, () => Date.now());
-
-export const currentTimeString = createPoll<string>("00:00", 1000, () => {
+export const currentTimeString = createPoll<string>("00:00:00", 200, () => {
   const now = new Date();
   const hh = now.getHours().toString().padStart(2, "0");
   const mm = now.getMinutes().toString().padStart(2, "0");
-  return `${hh}:${mm}`;
+  const ss = now.getSeconds().toString().padStart(2, "0");
+  return `${hh}:${mm}:${ss}`;
 });
 
 export function getCurrentDateString(): string {
