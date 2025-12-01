@@ -32,15 +32,27 @@ yellow_color="Yellow"
 # $1 - option1\noption2\noption3...
 # $2 - message
 # $3 - theme string ("listview {columns: 2; lines: 1;}")
+# $4 - active row (optional)
 run_rofi() {
+    local active_flag=""
+    if [ -n "$4" ]; then
+        active_flag="-a $4"
+    fi
     echo -e "$1" | rofi -dmenu \
         -mesg "$2" \
         -theme-str "$3" \
+        $active_flag \
         -theme $theme
 }
 
 # Run rofi and wait for a choice
-chosen="$(run_rofi "$appearence\n$network\n$bluetooth\n$night_light" "$settings_title" "listview {columns: 3; lines: 2;}")"
+current_nightlight=$(~/.config/rofi/scripts/get_config_value.sh enable_nightlight)
+# Mark night_light as selected
+active_element=""
+if [ "$current_nightlight" = "true" ]; then
+    active_element="3"
+fi
+chosen="$(run_rofi "$appearence\n$network\n$bluetooth\n$night_light" "$settings_title" "listview {columns: 3; lines: 2;}" $active_element)"
 case ${chosen} in
     $appearence)
         chosen_appearance="$(run_rofi "$background\n$mode\n$color" "$appearence" "listview {columns: 3; lines: 1;}")"
