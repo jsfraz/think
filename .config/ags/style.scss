@@ -5,20 +5,17 @@
 @use "colors.scss" as *;
 
 // Define color variables based on matugen palette
-$glass-base: $primary_container;           // Base glass color
-$glass-base-menu: $primary_container;   // Base glass color for menus
-$glass-accent: $primary;          // Accent color
-$text-shadow: $shadow;            // Text shadow
-$hover-overlay: $surface;      // Hover effect color
+$glass-base: $primary_container; // Base glass color
+$glass-base-menu: $primary_container; // Base glass color for menus
+$glass-accent: $primary; // Accent color
+$text-shadow: $shadow; // Text shadow
+$hover-overlay: $surface; // Hover effect color
 
 // Base glass container
 .glass-container {
-  background: linear-gradient(135deg,
-      rgba($glass-base, 0.2) 0%,
-      rgba($glass-base, 0.1) 50%,
-      rgba($glass-base, 0.15) 100%);
-  border: 1px solid rgba($glass-base, 0.25);
-  border-top-color: rgba($glass-base, 0.5);
+  background: rgba($glass-base, 0.1);
+  border: 1px solid rgba($glass-base, 0.15);
+  border-top-color: rgba($glass-base, 0.35);
   border-radius: 28px;
 }
 
@@ -26,17 +23,14 @@ $hover-overlay: $surface;      // Hover effect color
 .glass-container image,
 .glass-container label,
 .glass-text {
-  color: #ffffff;
+  color: $primary_fixed;
   text-shadow: 0 1px 2px rgba($text-shadow, 0.3);
 }
 
 .glass-menu {
-  background: linear-gradient(135deg,
-      rgba($glass-base-menu, 0.2) 0%,
-      rgba($glass-base-menu, 0.1) 50%,
-      rgba($glass-base-menu, 0.15) 100%);
-  border: 1px solid rgba($glass-base, 0.35);
-  border-top-color: rgba($glass-base, 0.5);
+  background: rgba($glass-base-menu, 0.1);
+  border: 1px solid rgba($glass-base-menu, 0.15);
+  border-top-color: rgba($glass-base-menu, 0.35);
   border-radius: 15px;
 }
 
@@ -44,7 +38,7 @@ $hover-overlay: $surface;      // Hover effect color
 .glass-menu image,
 .glass-menu label,
 .glass-text {
-  color: #ffffff;
+  color: $primary_fixed;
   text-shadow: 0 1px 2px rgba($text-shadow, 0.3);
 }
 

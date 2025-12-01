@@ -20,6 +20,9 @@ FORCE_MODE=false
 
 if [ ! -f ~/.config/sway/config.json ]; then
     jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR'}' > ~/.config/sway/config.json
+elif [ "$BACKGROUND_FILE" = $(jq -r '.background' ~/.config/sway/config.json) ]; then
+    # Exit if the selected background is the same as the current one
+    exit 0
 fi
 
 COLOR=$(jq -r '.color' ~/.config/sway/config.json)

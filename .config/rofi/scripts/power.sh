@@ -39,9 +39,11 @@ run_rofi() {
 chosen="$(run_rofi)"
 case ${chosen} in
     $shutdown)
+        # TODO confirm dialog
 		systemctl poweroff
         ;;
     $reboot)
+        # TODO confirm dialog
 		systemctl reboot
         ;;
     $lock)
@@ -53,4 +55,3 @@ case ${chosen} in
         # TODO psmouse
         ;;
 esac
-

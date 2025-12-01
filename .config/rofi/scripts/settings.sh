@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+## Author : Aditya Shakya (adi1090x)
+## Github : @adi1090x
+
+# Theme file
+theme="$HOME/.config/rofi/settings.rasi"
+# Title
+settings_title=" Settings"
+# Option buttons
+appearence=" Appearence"
+network="  Network"
+
+background="󰋩 Background"
+mode=" Mode"
+color=" Color"
+
+auto_mode="Auto"
+dark_mode=" Dark"
+light_mode=" Light"
+
+auto_color="Auto"
+blue_color="Blue"
+green_color="Green"
+orange_color="Orange"
+pink_color="Pink"
+purple_color="Purple"
+red_color="Red"
+teal_color="Teal"
+yellow_color="Yellow"
+
+# rofi command
+run_rofi() {
+    echo -e "$1" | rofi -dmenu \
+        -mesg "$2" \
+        -theme-str "$3" \
+        -theme $theme
+}
+
+# Run rofi and wait for a choice
+chosen="$(run_rofi "$appearence\n$network" "$settings_title")"
+case ${chosen} in
+    $appearence)
+        chosen_appearance="$(run_rofi "$background\n$mode\n$color" "$appearence")"
+        case ${chosen_appearance} in
+            $background)
+                ~/.config/rofi/scripts/set_background.sh
+                ;;
+            $mode)
+                chosen_mode="$(run_rofi "$auto_mode\n$dark_mode\n$light_mode" "$mode")"
+                chosen_mode=$(echo "$chosen_mode" | sed 's/^.* //' | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
+                ~/.config/rofi/scripts/set_mode.sh $chosen_mode
+                ;;
+            $color)
+                chosen_color="$(run_rofi "$auto_color\n$blue_color\n$green_color\n$orange_color\n$pink_color\n$purple_color\n$red_color\n$teal_color\n$yellow_color" "$color" "listview {columns: 3; lines: 3;}")"
+                chosen_color=$(echo "$chosen_color" | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
+                echo $chosen_color
+                ~/.config/rofi/scripts/set_color.sh $chosen_color
+                ;;
+        esac
+        ;;
+    $network)
+        # TODO
+        ;;
+esac
