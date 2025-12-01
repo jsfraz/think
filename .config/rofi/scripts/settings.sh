@@ -7,6 +7,8 @@ settings_title=" Settings"
 # Option buttons
 appearence=" Appearence"
 network="  Network"
+bluetooth=" Bluetooth"
+night_light="󱩌 Night light"
 
 background="󰋩 Background"
 mode=" Mode"
@@ -38,7 +40,7 @@ run_rofi() {
 }
 
 # Run rofi and wait for a choice
-chosen="$(run_rofi "$appearence\n$network" "$settings_title" "listview {columns: 2; lines: 1;}")"
+chosen="$(run_rofi "$appearence\n$network\n$bluetooth\n$night_light" "$settings_title" "listview {columns: 3; lines: 2;}")"
 case ${chosen} in
     $appearence)
         chosen_appearance="$(run_rofi "$background\n$mode\n$color" "$appearence" "listview {columns: 3; lines: 1;}")"
@@ -63,5 +65,19 @@ case ${chosen} in
         ;;
     $network)
         networkmanager_dmenu
+        ;;
+    $night_light)
+        current_nightlight=$(~/.config/rofi/scripts/get_config_value.sh enable_nightlight)
+        case $current_nightlight in
+            true)
+                ~/.config/rofi/scripts/set_nightlight.sh false
+                ;;
+            false)
+                ~/.config/rofi/scripts/set_nightlight.sh true
+                ;;
+        esac
+        ;;
+    $bluetooth)
+        # TODO
         ;;
 esac

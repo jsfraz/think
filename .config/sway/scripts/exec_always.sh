@@ -5,10 +5,11 @@ COLOR="auto"
 FORCE_COLOR=false
 MODE="auto"
 FORCE_MODE=false
+ENABLE_NIGHTLIGHT=true
 
 # Create ~/.config/sway/config.json with default background
 if [ ! -f ~/.config/sway/config.json ]; then
-    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR'}' > ~/.config/sway/config.json
+    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR', enable_nightlight: '$ENABLE_NIGHTLIGHT'}' > ~/.config/sway/config.json
     ~/.config/sway/scripts/matugen.sh
 fi
 
@@ -46,6 +47,19 @@ gsettings set org.gnome.desktop.interface icon-theme "Adwaita-${COLOR}"
 
 # Set background image
 swaymsg output "*" bg $BACKGROUND_FILE_EXPANDED fill
+
+# wlsunset
+ENABLE_NIGHTLIGHT=$(jq -r '.enable_nightlight' ~/.config/sway/config.json)
+if [ $ENABLE_NIGHTLIGHT = false ]; then
+    killall -q wlsunset
+    exit 0
+else
+    if ! pgrep -x wlsunset >/dev/null; then
+        lat=$(grep '^lat:' ~/.config/darkman/config.yaml | awk '{print $2}')
+        lng=$(grep '^lng:' ~/.config/darkman/config.yaml | awk '{print $2}')
+        wlsunset -l $lat -L $lng &
+    fi
+fi
 
 # ags
 ASTAL_BATTERY_DIR=$(dirname $(find /usr -name "*AstalBattery*.typelib" 2>/dev/null))

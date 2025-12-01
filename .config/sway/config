@@ -10,9 +10,7 @@ set $term alacritty
 # rofi
 set $power ~/.config/rofi/scripts/power.sh
 set $settings ~/.config/rofi/scripts/settings.sh
-set $network_manager networkmanager_dmenu
-set $system_monitor alacritty -T btop++ -e btop
-set $menu rofi -show drun -theme ~/.config/rofi/launcher.rasi -show-icons -icon-theme $(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
+set $launcher rofi -show drun -theme ~/.config/rofi/launcher.rasi -show-icons -icon-theme $(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
 # Screensaver
 set $screensaver_timeout_seconds 600
 set $mouse_hide_timeout_milliseconds 600000
@@ -113,12 +111,8 @@ input "*" {
     bindsym $mod+a exec $power
     # Settings
     bindsym $mod+s exec $settings
-    # Network manager
-    bindsym $mod+n exec $network_manager
-    # System monitor
-    bindsym $mod+Shift+b exec $system_monitor
     # Launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+d exec $launcher
     
     # Matugen
     bindsym $mod+Shift+m exec ~/.config/sway/scripts/matugen.sh && swaymsg reload

@@ -12,9 +12,10 @@ COLOR="auto"
 FORCE_COLOR=false
 MODE="auto"
 FORCE_MODE=false
+ENABLE_NIGHTLIGHT=true
 
 if [ ! -f ~/.config/sway/config.json ]; then
-    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR'}' > ~/.config/sway/config.json 
+    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR', enable_nightlight: '$ENABLE_NIGHTLIGHT'}' > ~/.config/sway/config.json 
 elif [ "$1" = $(jq -r '.color' ~/.config/sway/config.json) ]; then
     # Exit if the selected color is the same as the current one
     exit 0
@@ -23,6 +24,7 @@ fi
 BACKGROUND_FILE=$(jq -r '.background' ~/.config/sway/config.json)
 MODE=$(jq -r '.mode' ~/.config/sway/config.json)
 FORCE_MODE=$(jq -r '.force_mode' ~/.config/sway/config.json)
+ENABLE_NIGHTLIGHT=$(jq -r '.enable_nightlight' ~/.config/sway/config.json)
 
 if [ "$1" = "auto" ]; then
     FORCE_COLOR=false
@@ -32,7 +34,7 @@ else
     COLOR=$1
 fi
 
-jq ".background = \"$BACKGROUND_FILE\" | .mode = \"$MODE\" | .force_mode = \"$FORCE_MODE\" | .color = \"$COLOR\" | .force_color = \"$FORCE_COLOR\"" ~/.config/sway/config.json > ~/.config/sway/config.json.tmp && \
+jq ".background = \"$BACKGROUND_FILE\" | .mode = \"$MODE\" | .force_mode = \"$FORCE_MODE\" | .color = \"$COLOR\" | .force_color = \"$FORCE_COLOR\" | .enable_nightlight = $ENABLE_NIGHTLIGHT" ~/.config/sway/config.json > ~/.config/sway/config.json.tmp && \
 mv ~/.config/sway/config.json.tmp ~/.config/sway/config.json
 
 # matugen
