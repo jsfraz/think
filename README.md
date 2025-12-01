@@ -37,6 +37,9 @@ Rice for my shit Elitebook 840 G1.
 - [adobe-source-han-sans-jp-fonts](https://archlinux.org/packages/?name=adobe-source-han-sans-jp-fonts) (or any other japanese font of your choice)
 - [foot](https://codeberg.org/dnkl/foot)
 - [neo](https://github.com/st3w/neo)
+- [networkmanager-dmenu](https://github.com/firecat53/networkmanager-dmenu)
+- [nm-connection-editor](https://archlinux.org/packages/?name=nm-connection-editor);
+- [networkmanager-openvpn](https://archlinux.org/packages/?name=networkmanager-openvpn) (+ `libnma-gtk4` and `libnma` [packages](https://wiki.archlinux.org/title/NetworkManager#OpenVPN_connections_fail_with_%22secrets:_failed_to_request_VPN_secrets%22_warn))
 
 ## swayfx
 
@@ -115,10 +118,11 @@ After generating theme using `matugen`, choose it from `btop` settings.
 
 ## rofi
 
-### Linking config
+### Linking config directories
 
 ```bash
 ln -sf $PWD/.config/rofi ~/.config/rofi
+ln -sf $PWD/.config/networkmanager-dmenu ~/.config/networkmanager-dmenu
 ```
 
 ## ags

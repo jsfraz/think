@@ -62,6 +62,6 @@ case ${chosen} in
         esac
         ;;
     $network)
-        # TODO
+        networkmanager_dmenu
         ;;
 esac

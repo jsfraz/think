@@ -31,8 +31,10 @@
       "format": "{$1}"
     },
     "os",
+    "kernel",
     "uptime",
     "cpu",
+    "gpu",
     {
       "type": "memory",
       "percent": {

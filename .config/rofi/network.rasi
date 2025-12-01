@@ -1,0 +1,124 @@
+configuration {
+	modi:                       "drun";
+    show-icons:                 true;
+    display-drun:               "";
+	drun-display-format:        "{name}";
+}
+
+@import "colors.rasi"
+@import "fonts.rasi"
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    x-offset:                    0px;
+    y-offset:                    0px;
+
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      1px solid;
+    border-radius:               20px;
+    border-color:                @border;
+    background-color:            @background;
+    cursor:                      "default";
+}
+mainbox {
+    enabled:                     true;
+    spacing:                     15px;
+    margin:                      0px;
+    padding:                     15px;
+    border:                      0px solid;
+    border-radius:               0px 0px 0px 0px;
+    background-color:            transparent;
+}
+listview {
+    padding:                     0px;
+    scrollbar:                   true;
+    border:                      0px solid;
+    spacing:                     0px;
+    fixed-height:                true;
+    margin:                      0px;
+    border-radius:               0px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      "default";
+}
+scrollbar {
+    width:                       5px ;
+    padding:                     0;
+    handle-width:                10px ;
+    border:                      0;
+    background-color:            @background2;
+    handle-color:                @selected;
+}
+inputbar {
+    enabled:                     true;
+    spacing:                     10px;
+    margin:                      0px;
+    padding:                     10px;
+    border:                      1px solid;
+    border-radius:               10px;
+    border-color:                @border;
+    background-color:            @background2;
+    text-color:                  @foreground;
+    children:   [ "prompt", "entry" ];
+}
+entry {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      text;
+    placeholder-color:           inherit;
+}
+prompt {
+    enabled:                     true;
+    background-color:            transparent;
+    text-color:                  inherit;
+    padding:                     0px;
+}
+
+element {
+    enabled:                     true;
+    margin:                      0px;
+    padding:                     0px;
+    border:                      0px solid;
+    border-radius:               0px;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    orientation:                 horizontal;
+    cursor:                      pointer;
+}
+element normal.normal {
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+element normal.active {
+    background-color: @active-normal;
+    text-color:       @foreground;
+}
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @foreground;
+}
+element selected.active {
+    background-color: @active-selected;
+    text-color:       @foreground;
+}
+element alternate.active {
+    background-color: @active-normal;
+    text-color:       @foreground;
+}
+element-icon {
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+}
+element-text {
+    background-color:            transparent;
+    text-color:                  inherit;
+    highlight:                   inherit;
+    cursor:                      inherit;
+}
