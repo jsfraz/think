@@ -50,11 +50,11 @@ run_rofi() {
 # Run rofi and wait for a choice
 current_nightlight=$(~/.config/rofi/scripts/get_config_value.sh enable_nightlight)
 # Mark night_light as selected
-active_element=""
+active_nightlight_element=""
 if [ "$current_nightlight" = "true" ]; then
-    active_element="3"
+    active_nightlight_element="3"
 fi
-chosen="$(run_rofi "$appearence\n$network\n$bluetooth\n$night_light\n$sound\n$power_profile" "$settings_title" "listview {columns: 3; lines: 2;}" $active_element)"
+chosen="$(run_rofi "$appearence\n$network\n$bluetooth\n$night_light\n$sound\n$power_profile" "$settings_title" "listview {columns: 3; lines: 2;}" $active_nightlight_element)"
 case ${chosen} in
     $appearence)
         chosen_appearance="$(run_rofi "$background\n$mode\n$color" "$appearence" "listview {columns: 3; lines: 1;}")"
@@ -64,13 +64,57 @@ case ${chosen} in
                 ;;
             $mode)
                 current_mode=$(~/.config/rofi/scripts/get_config_value.sh mode)
-                chosen_mode="$(run_rofi "$auto_mode\n$dark_mode\n$light_mode" "$mode (${current_mode^})" "listview {columns: 3; lines: 1;}")"
+                # Mark mode as selected
+                active_mode_element=""
+                case $current_mode in
+                    auto)
+                        active_mode_element="0"
+                        ;;
+                    dark)
+                        active_mode_element="1"
+                        ;;
+                    light)
+                        active_mode_element="2"
+                        ;;
+                esac
+                chosen_mode="$(run_rofi "$auto_mode\n$dark_mode\n$light_mode" "$mode (${current_mode^})" "listview {columns: 3; lines: 1;}" $active_mode_element)"
                 chosen_mode=$(echo "$chosen_mode" | sed 's/^.* //' | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
                 ~/.config/rofi/scripts/set_mode.sh $chosen_mode
                 ;;
             $color)
                 current_color=$(~/.config/rofi/scripts/get_config_value.sh color)
-                chosen_color="$(run_rofi "$auto_color\n$blue_color\n$green_color\n$orange_color\n$pink_color\n$purple_color\n$red_color\n$teal_color\n$yellow_color" "$color (${current_color^})" "listview {columns: 3; lines: 3;}")"
+                # Mark color as selected
+                active_color_element=""
+                case $current_color in
+                    auto)
+                        active_color_element="0"
+                        ;;
+                    blue)
+                        active_color_element="1"
+                        ;;
+                    green)
+                        active_color_element="2"
+                        ;;
+                    orange)
+                        active_color_element="3"
+                        ;;
+                    pink)
+                        active_color_element="4"
+                        ;;
+                    purple)
+                        active_color_element="5"
+                        ;;
+                    red)
+                        active_color_element="6"
+                        ;;
+                    teal)
+                        active_color_element="7"
+                        ;;
+                    yellow)
+                        active_color_element="8"
+                        ;;
+                esac
+                chosen_color="$(run_rofi "$auto_color\n$blue_color\n$green_color\n$orange_color\n$pink_color\n$purple_color\n$red_color\n$teal_color\n$yellow_color" "$color (${current_color^})" "listview {columns: 3; lines: 3;}" $active_color_element)"
                 chosen_color=$(echo "$chosen_color" | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
                 echo $chosen_color
                 ~/.config/rofi/scripts/set_color.sh $chosen_color
