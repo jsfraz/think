@@ -4,6 +4,6 @@
     background2: {{colors.primary_container.default.hex}}40;
     foreground: {{colors.primary_fixed.default.hex}};
     selected: {{colors.on_secondary_container.default.hex}}40;
-    active-normal: {{colors.on_secondary_container.default.hex}}30;
+    active-normal: {{colors.on_tertiary_container.default.hex}}30;
     active-selected: {{colors.source_color.default.hex}}c0;
 }

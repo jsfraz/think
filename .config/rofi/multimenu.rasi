@@ -127,6 +127,7 @@ element normal.active {
     border-color:     @active-normal;
     background-color: @active-normal;
     text-color:       @foreground;
+    font-weight:      bold;
 }
 element selected.normal {
     border-color:                @selected;
@@ -137,9 +138,11 @@ element selected.active {
     border-color:                @active-selected;
     background-color: @active-selected;
     text-color:       @foreground;
+    font-weight:      bold;
 }
 element alternate.active {
     border-color:     @active-normal;
     background-color: @active-normal;
     text-color:       @foreground;
+    font-weight:      bold;
 }

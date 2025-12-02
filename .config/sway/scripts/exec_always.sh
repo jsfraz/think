@@ -49,17 +49,10 @@ gsettings set org.gnome.desktop.interface icon-theme "Adwaita-${COLOR}"
 swaymsg output "*" bg $BACKGROUND_FILE_EXPANDED fill
 
 # wlsunset
-ENABLE_NIGHTLIGHT=$(jq -r '.enable_nightlight' ~/.config/sway/config.json)
-if [ $ENABLE_NIGHTLIGHT = false ]; then
-    killall -q wlsunset
-    exit 0
-else
-    if ! pgrep -x wlsunset >/dev/null; then
-        lat=$(grep '^lat:' ~/.config/darkman/config.yaml | awk '{print $2}')
-        lng=$(grep '^lng:' ~/.config/darkman/config.yaml | awk '{print $2}')
-        wlsunset -l $lat -L $lng &
-    fi
-fi
+~/.config/sway/scripts/wlsunset.sh
+
+# TODO conky weather
+# TODO conky system load
 
 # ags
 ASTAL_BATTERY_DIR=$(dirname $(find /usr -name "*AstalBattery*.typelib" 2>/dev/null))

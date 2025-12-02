@@ -32,13 +32,4 @@ jq ".background = \"$BACKGROUND_FILE\" | .mode = \"$MODE\" | .force_mode = \"$FO
 mv ~/.config/sway/config.json.tmp ~/.config/sway/config.json
 
 # wlsunset
-if [ $ENABLE_NIGHTLIGHT = false ]; then
-    killall -q wlsunset
-    exit 0
-else
-    if ! pgrep -x wlsunset >/dev/null; then
-        lat=$(grep '^lat:' ~/.config/darkman/config.yaml | awk '{print $2}')
-        lng=$(grep '^lng:' ~/.config/darkman/config.yaml | awk '{print $2}')
-        wlsunset -l $lat -L $lng &
-    fi
-fi
+~/.config/sway/scripts/wlsunset.sh

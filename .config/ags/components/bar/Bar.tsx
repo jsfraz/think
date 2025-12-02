@@ -5,6 +5,11 @@ import Clock from "./modules/clock/Clock"
 import BatteryIndicator from "./modules/batteryIndicator/BatteryIndicator"
 import RunCat from "./modules/runCat/RunCat"
 
+/*
+TODO tray icons
+TODO connected network indicators (maybe network-manager-applet in tray)
+*/
+
 export default function Bar(gdkmonitor: Gdk.Monitor) {
   const { TOP, LEFT, BOTTOM } = Astal.WindowAnchor
 
