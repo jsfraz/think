@@ -26,6 +26,7 @@ if [ ! -d "$REPO_DIR/data/images" ]; then
     exit 1
 fi
 
+# TODO copy only good images (maybe with capital letter?)
 echo "Copying images..."
 # Move all images (recursively, if there are subdirectories)
 cp -rf "$REPO_DIR/data/images/"* "$PWD/.config/sway/backgrounds/"

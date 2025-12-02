@@ -8,5 +8,9 @@ app.start({
     // TODO Validate monitors
 
     app.get_monitors().map(Bar);
+
+    // TODO Media player start/stop indicator
+    // TODO Brightness change inidicator
+    // TODO Volume change indicator
   },
 })

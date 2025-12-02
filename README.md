@@ -4,7 +4,7 @@
 
 Rice for my shit Elitebook 840 G1.
 
-# TODO screenshot
+TODO screenshot
 
 ## Dependencies
 
@@ -19,10 +19,10 @@ Rice for my shit Elitebook 840 G1.
 - [libnotify](https://gitlab.gnome.org/GNOME/libnotify)
 - [mako](https://github.com/emersion/mako)
 - [jq](https://github.com/jqlang/jq)
-- [btop](https://github.com/aristocratos/btop) (recommended)
-- [zenity-gtk3](https://aur.archlinux.org/packages/zenity-gtk3) (or [zenity](https://gitlab.gnome.org/GNOME/zenity) if not available)
+- [btop](https://github.com/aristocratos/btop)
+- [zenity-gtk3](https://aur.archlinux.org/packages/zenity-gtk3)
 - [darkman](https://gitlab.com/WhyNotHugo/darkman)
-- [nemo](https://github.com/linuxmint/nemo) (recommended)
+- [nemo](https://github.com/linuxmint/nemo)
 - [Orchis-theme](https://github.com/vinceliuice/Orchis-theme) (`./install.sh -t all -s compact`)
 - [MoreWaita](https://github.com/somepaulo/MoreWaita)
 - [Adwaita-colors](https://github.com/dpejoh/Adwaita-colors) (run `sudo ./morewaita.sh` after installing MoreWaita and Adwaita-colors)
@@ -39,7 +39,7 @@ Rice for my shit Elitebook 840 G1.
 - [neo](https://github.com/st3w/neo)
 - [networkmanager-dmenu](https://github.com/firecat53/networkmanager-dmenu)
 - [nm-connection-editor](https://archlinux.org/packages/?name=nm-connection-editor)
-- [networkmanager-openvpn](https://archlinux.org/packages/?name=networkmanager-openvpn) (+ `libnma-gtk4` and `libnma` [packages](https://wiki.archlinux.org/title/NetworkManager#OpenVPN_connections_fail_with_%22secrets:_failed_to_request_VPN_secrets%22_warn))
+- [networkmanager-openvpn](https://archlinux.org/packages/?name=networkmanager-openvpn) (with `libnma-gtk4` and `libnma` [packages](https://wiki.archlinux.org/title/NetworkManager#OpenVPN_connections_fail_with_%22secrets:_failed_to_request_VPN_secrets%22_warn))
 - [wlsunset](https://sr.ht/~kennylevinsen/wlsunset/)
 
 ## swayfx
@@ -120,6 +120,7 @@ After generating theme using `matugen`, choose it from `btop` settings.
 ## rofi
 
 TODO SSH
+
 TODO Remove unwanted apps from app launcher
 
 ### Linking config directories
