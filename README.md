@@ -19,6 +19,7 @@ TODO screenshot
 - [libnotify](https://gitlab.gnome.org/GNOME/libnotify)
 - [mako](https://github.com/emersion/mako)
 - [jq](https://github.com/jqlang/jq)
+- [ydotool](https://github.com/ReimuNotMoe/ydotool)
 - [btop](https://github.com/aristocratos/btop)
 - [zenity-gtk3](https://aur.archlinux.org/packages/zenity-gtk3)
 - [darkman](https://gitlab.com/WhyNotHugo/darkman)
@@ -123,7 +124,7 @@ TODO SSH
 
 TODO Remove unwanted apps from app launcher
 
-### Linking config directories
+### Linking config
 
 ```bash
 ln -sf $PWD/.config/rofi ~/.config/rofi
@@ -152,6 +153,34 @@ ags run
 ```
 
 This is done automatically when using provided `sway` config.
+
+## ydotool
+
+You need to run `ydotool` deamon as root to use cursor positioning script. Create a systemd service file at `/etc/systemd/system/ydotool.service` with
+
+```bash
+[Unit]
+Description=Starts ydotoold service
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=ydotoold --socket-path="/tmp/.ydotool_socket" --socket-own="1000:1000"
+ExecReload=kill -HUP $MAINPID
+KillMode=process
+TimeoutSec=180
+
+[Install]
+WantedBy=default.target
+```
+
+Then enable and start the service:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable ydotool.service
+sudo systemctl start ydotool.service
+```
 
 ## darkman
 

@@ -21,25 +21,21 @@ if [ -n "$SWAYSOCK" ] && [ -S "$SWAYSOCK" ]; then
     MODE=auto
     FORCE_MODE=false
     ENABLE_NIGHTLIGHT=true
+    AUTOCLICK_ENABLED=false
+    AUTOCLICK_INTERVAL=1000
 
     # Create ~/.config/sway/config.json with default background
     if [ ! -f ~/.config/sway/config.json ]; then
         jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR', enable_nightlight: '$ENABLE_NIGHTLIGHT'}' > ~/.config/sway/config.json
     fi
 
-    # Check whether the mode actually changed
-    if [ "$(darkman get)" = "$(jq -r '.mode' ~/.config/sway/config.json)" ] || [ $(jq -r '.force_mode' ~/.config/sway/config.json) = true ]; then
-        exit 0
-    fi
-
-    BACKGROUND_FILE=$(jq -r '.background' ~/.config/sway/config.json)
-    FORCE_COLOR=$(jq -r '.force_color' ~/.config/sway/config.json)
-    COLOR=$(jq -r '.color' ~/.config/sway/config.json)
-    MODE=$(darkman get)
     FORCE_MODE=$(jq -r '.force_mode' ~/.config/sway/config.json)
 
-    jq ".background = \"$BACKGROUND_FILE\" | .mode = \"$MODE\" | .force_mode = \"$FORCE_MODE\" | .color = \"$COLOR\" | .force_color = \"$FORCE_COLOR\"" ~/.config/sway/config.json > ~/.config/sway/config.json.tmp && \
-    mv ~/.config/sway/config.json.tmp ~/.config/sway/config.json
+    # Check whether the mode actually changed
+    if [ $FORCE_MODE = true ]; then
+        # Mode is forced, exit
+        exit 0
+    fi
 
     # matugen
     ~/.config/sway/scripts/matugen.sh

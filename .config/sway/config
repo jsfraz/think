@@ -113,9 +113,10 @@ input "*" {
     bindsym $mod+s exec $settings
     # Launcher
     bindsym $mod+d exec $launcher
-    
     # Matugen
     bindsym $mod+Shift+m exec ~/.config/sway/scripts/matugen.sh && swaymsg reload
+    # Autoclick
+    bindsym $mod+c exec ~/.config/sway/scripts/autoclick_toggle.sh
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
