@@ -14,7 +14,7 @@
   "display": {
     "separator": " \uf460 ",
     "constants": [
-      "───────────"
+      "──────────"
     ],
     "key": {
       "type": "icon"
@@ -34,7 +34,10 @@
     "kernel",
     "uptime",
     "cpu",
-    "gpu",
+    {
+      "type": "gpu",
+      "format": "{name}"
+    },
     {
       "type": "memory",
       "percent": {
@@ -46,6 +49,10 @@
       "percent": {
         "type": 0
       }
+    },
+    {
+      "type": "battery",
+      "format": "{time-hours} hours {time-minutes} mins ({capacity}) ({status})"
     },
     "break",
     {
