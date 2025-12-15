@@ -31,6 +31,10 @@ output_path = "~/.config/starship.toml"
 input_path = "~/.config/matugen/templates/fastfetch.jsonc"
 output_path = "~/.config/fastfetch/config.jsonc"
 
+[templates.fastfetch_logo_no_color]
+input_path = "~/.config/matugen/templates/arch_logo_medium.txt"
+output_path = "~/.config/fastfetch/arch_logo_medium.txt"
+
 [templates.btop]
 input_path = "~/.config/matugen/templates/btop.theme"
 output_path = "~/.config/btop/themes/matugen.theme"
