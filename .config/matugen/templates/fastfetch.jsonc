@@ -8,8 +8,7 @@
       "2": "{{colors.source_color.default.hex}}"
     },
     "padding": {
-      "top": 1,
-      "left": 3
+      "left": 2
     }
   },
   "display": {
