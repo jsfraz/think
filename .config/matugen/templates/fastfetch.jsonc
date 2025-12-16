@@ -8,7 +8,7 @@
       "2": "{{colors.source_color.default.hex}}"
     },
     "padding": {
-      "left": 2
+      "left": 3
     }
   },
   "display": {
@@ -53,7 +53,7 @@
     },
     {
       "type": "battery",
-      "format": "{time-hours} hours {time-minutes} mins ({capacity}) ({status})"
+      "format": "{capacity} ({status})"
     },
     "break",
     {

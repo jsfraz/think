@@ -1,13 +1,11 @@
-            -`
-            o+
-          `+oo:
-          +oooo:
-        `/-:+ooo:
-        /++++++++:
-      `/++oooooooo/`
-      /oosss++sssso+
-    -ossss.    .sssso.
-    ossss        sso++
-  /osso/:        :/oss+-
- `ss+:`           `./+so
-.s`                    s/
+           :;
+          ,oo:
+         ,oooo:
+        ,oooooo;
+       :ooooooss;
+      ;oooooossss
+     ;oosso::ooooss
+    ooooss    ;oooss.
+  .ooosss,    ,oooos;
+ ,oos;:,.       ,:;oos:
+,;:.                .:s,
