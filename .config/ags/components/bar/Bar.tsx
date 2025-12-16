@@ -10,6 +10,9 @@ TODO Connected bluetooth devices indicator
 TODO Tray icons
 TODO Connected network indicators (maybe network-manager-applet in tray)
 TODO Current power profile indicator
+TODO Volume indicator
+TODO Notifications indicator
+TODO Current workspace indicator
 */
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
