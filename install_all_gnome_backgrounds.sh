@@ -26,7 +26,7 @@ if [ ! -d "$REPO_DIR/data/images" ]; then
     exit 1
 fi
 
-# TODO copy only good images (maybe with capital letter?)
 echo "Copying images..."
-# Move all images (recursively, if there are subdirectories)
-cp -rf "$REPO_DIR/data/images/"* "$PWD/.config/sway/backgrounds/"
+# Move only files that start with uppercase letter
+# TODO copy images based on JSON data
+find "$REPO_DIR/data/images" -type f -name '[A-Z]*' -exec cp {} "$PWD/.config/sway/backgrounds/" \;

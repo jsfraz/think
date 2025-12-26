@@ -1,6 +1,6 @@
 background-color={{colors.primary_container.default.hex}}80
 text-color={{colors.primary_fixed.default.hex}}
-border-color={{colors.primary_container.default.hex}}80
+border-color={{colors.primary_container.default.hex}}e8
 font=FiraCode Nerd Font Mono 10
 padding=10
 border-size=1
@@ -8,4 +8,4 @@ border-radius=10
 default-timeout=5000
 
 [urgency=high]
-border-color={{colors.error_container.default.hex}}
+border-color={{colors.error_container.default.hex}}e8

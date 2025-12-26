@@ -1,7 +1,7 @@
 * {
     background: {{colors.primary_container.default.hex}}80;
-    border: {{colors.primary_container.default.hex}}80;
-    background2: {{colors.primary_container.default.hex}}80;
+    border: {{colors.primary_container.default.hex}}e8;
+    background2: {{colors.primary_container.default.hex}}40;
     foreground: {{colors.primary_fixed.default.hex}};
     selected: {{colors.on_secondary_container.default.hex}}40;
     active-normal: {{colors.on_tertiary_container.default.hex}}30;
