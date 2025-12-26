@@ -12,7 +12,7 @@ let [hasShownFullyChargedNotification, _setHasShownFullyChargedNotification] = c
 battery.connect("notify::percentage", async () => {
     const percentage = battery.percentage * 100;
 
-    if (percentage <= 15 && !battery.charging && !hasShownLowBatteryWarning) {
+    if (percentage <= 15 && !battery.charging && !hasShownLowBatteryWarning.peek()) {
         await notify({
             summary: "Low Battery",
             body: `Battery level is at ${Math.round(percentage)}%`,
@@ -28,7 +28,7 @@ battery.connect("notify::percentage", async () => {
     }
 
     // Notify when fully charged
-    if (percentage >= 100 && battery.charging && !hasShownFullyChargedNotification) {
+    if (percentage == 100 && battery.charging && !hasShownFullyChargedNotification.peek()) {
         await notify({
             summary: "Battery Fully Charged",
             body: "Battery is at 100%",
