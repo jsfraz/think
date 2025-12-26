@@ -42,6 +42,7 @@ TODO screenshot
 - [nm-connection-editor](https://archlinux.org/packages/?name=nm-connection-editor)
 - [networkmanager-openvpn](https://archlinux.org/packages/?name=networkmanager-openvpn) (with `libnma-gtk4` and `libnma` [packages](https://wiki.archlinux.org/title/NetworkManager#OpenVPN_connections_fail_with_%22secrets:_failed_to_request_VPN_secrets%22_warn))
 - [wlsunset](https://sr.ht/~kennylevinsen/wlsunset/)
+- [qalculate-gtk](https://github.com/Qalculate/qalculate-gtk)
 
 ## swayfx
 

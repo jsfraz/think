@@ -65,6 +65,10 @@ for_window [app_id="nm-connection-editor"] {
     floating enable;
 }
 
+for_window [app_id="qalculate"] {
+    floating enable;
+}
+
 ### Screensaver terminal fullscreen
 for_window [app_id="screensaver"] {
     fullscreen enable;
