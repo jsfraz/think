@@ -15,7 +15,7 @@ TODO screenshot
 - [grimshot](https://sr.ht/~emersion/grim/) ([sway-contrib package](https://github.com/OctopusET/sway-contrib))
 - [matugen](https://github.com/InioX/matugen)
 - [FiraCode Nerd Font](https://www.nerdfonts.com)
-- [AstalBattery](https://aylur.github.io/astal/guide/libraries/battery) (run `ags types` after installing)
+- [AstalBattery](https://aylur.github.io/astal/guide/libraries/battery), [AstalTray](https://aylur.github.io/astal/guide/libraries/tray) (run `ags types` after installing)
 - [libnotify](https://gitlab.gnome.org/GNOME/libnotify)
 - [mako](https://github.com/emersion/mako)
 - [jq](https://github.com/jqlang/jq)

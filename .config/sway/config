@@ -69,6 +69,10 @@ for_window [app_id="qalculate"] {
     floating enable;
 }
 
+for_window [class="MEGAsync"] {
+    floating enable;
+}
+
 ### Screensaver terminal fullscreen
 for_window [app_id="screensaver"] {
     fullscreen enable;
