@@ -2,6 +2,7 @@
 @use "modules/osIcon/osIcon.scss";
 @use "modules/clock/clock.scss";
 @use "modules/batteryIndicator/batteryIndicator.scss";
+@use "modules/trayIcons/trayIcons.scss";
 
 window.Bar {
   font-family: 'FiraCode Nerd Font Mono', monospace;

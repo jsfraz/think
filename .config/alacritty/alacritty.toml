@@ -2,7 +2,7 @@
 import = ["colors.toml"]
 
 [window]
-opacity = 0.3
+opacity = 0.25
 
 [font]
 normal = { family = "FiraCode Nerd Font", style = "Mono" }

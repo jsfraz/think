@@ -1,5 +1,5 @@
-background-color={{colors.primary_container.default.hex}}80
-text-color={{colors.primary_fixed.default.hex}}
+background-color={{colors.primary_container.default.hex}}4d
+text-color={{colors.on_surface.default.hex}}
 border-color={{colors.primary_container.default.hex}}e8
 font=FiraCode Nerd Font Mono 10
 padding=10
