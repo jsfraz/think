@@ -44,6 +44,11 @@ TODO screenshot
 - [wlsunset](https://sr.ht/~kennylevinsen/wlsunset/)
 - [qalculate-gtk](https://github.com/Qalculate/qalculate-gtk)
 
+TODO calendar
+TODO bluetooth manager
+TODO notification bar
+TODO KDE Connect alternative
+
 ## swayfx
 
 To start `swayfx` on login, add this to `~/.bash_profile`:

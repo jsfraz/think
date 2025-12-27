@@ -5,14 +5,13 @@ import Clock from "./modules/clock/Clock"
 import BatteryIndicator from "./modules/batteryIndicator/BatteryIndicator"
 import RunCat from "./modules/runCat/RunCat"
 import TrayIcons from "./modules/trayIcons/TrayIcons"
+import Workspace from "./modules/workspace/Workspace"
 
 /*
 TODO Connected bluetooth devices indicator
 TODO Connected network indicators (maybe network-manager-applet in tray)
 TODO Current power profile indicator
-TODO Volume indicator
-TODO Notifications indicator
-TODO Current workspace indicator
+TODO Volume (mute) and brightness indicator
 */
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
@@ -40,6 +39,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
           homogeneous={false}
           orientation={Gtk.Orientation.VERTICAL}
           class={"boxAnimation"}
+          halign={Gtk.Align.CENTER}
         >
           <OsIcon />
         </box>
@@ -49,9 +49,11 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
           homogeneous={false}
           orientation={Gtk.Orientation.VERTICAL}
           class={"bottomPadding boxAnimation"}
+          halign={Gtk.Align.CENTER}
         >
           <TrayIcons />
           <RunCat />
+          <Workspace />
           <BatteryIndicator />
           <Clock />
         </box>

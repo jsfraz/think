@@ -3,6 +3,8 @@
 @use "modules/clock/clock.scss";
 @use "modules/batteryIndicator/batteryIndicator.scss";
 @use "modules/trayIcons/trayIcons.scss";
+@use "modules/runCat/runCat.scss";
+@use "modules/workspace/workspace.scss";
 
 window.Bar {
   font-family: 'FiraCode Nerd Font Mono', monospace;

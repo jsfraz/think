@@ -26,7 +26,7 @@ $hover-overlay: $surface; // Hover effect color
 }
 
 .separator {
-  background-color: rgba(#ffffff, 0.2);
+  background-color: rgba($primary_fixed, 0.2);
 }
 
 .short-separator {
