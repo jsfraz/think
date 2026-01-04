@@ -129,7 +129,7 @@ After generating theme using `matugen`, choose it from `btop` settings.
 
 ## rofi
 
-TODO SSH
+TODO SSH!
 
 TODO Remove unwanted apps from app launcher
 

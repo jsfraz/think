@@ -53,7 +53,7 @@ run_yes_no() {
 chosen="$(run_rofi)"
 case ${chosen} in
     $shutdown)
-        yes_no="$(run_yes_no "Shutdown now?" "window {width: 20%;} listview {columns: 2; lines: 1;}")"
+        yes_no="$(run_yes_no "Shutdown now?" "window {width: 20%;} listview {columns: 2; lines: 1}")"
         case ${yes_no} in
             $yes)
                 systemctl poweroff

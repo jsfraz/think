@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# TODO maybe use https://github.com/pizzasqueeze/Thinkpad-Grub-Theme instead
+# TODO use https://github.com/pizzasqueeze/Thinkpad-Grub-Theme instead
 # Directory to clone the repository into
 REPO_DIR="$PWD/HyperFluent-GRUB-Theme"
 

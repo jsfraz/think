@@ -108,6 +108,8 @@ listview {
     background-color:            transparent;
     text-color:                  @foreground;
     cursor:                      "default";
+
+    flow: horizontal;
 }
 
 /*****----- Elements -----*****/
@@ -128,6 +130,8 @@ element normal.normal {
     text-color:                  @foreground;
 }
 element selected.normal {
+    border:                      1px solid;
+    border-color:                @border;
     background-color:            @selected;
     text-color:                  @foreground;
 }
