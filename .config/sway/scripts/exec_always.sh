@@ -29,9 +29,12 @@ if [ $FORCE_MODE = true ]; then
     MODE=$(jq -r '.mode' ~/.config/sway/config.json)
 else
     MODE=$(darkman get)
-fi  
+fi
 
-# stop ags
+# Stop swayosd-server
+killall -q swayosd-server
+
+# Stop ags
 killall -q gjs
 while pgrep -x gjs >/dev/null; do sleep 0.001; done
 
@@ -55,6 +58,9 @@ swaymsg output "*" bg $BACKGROUND_FILE_EXPANDED fill
 
 # TODO conky weather
 # TODO conky system load
+
+# Start swayosd-server
+swayosd-server &
 
 # ags
 ASTAL_BATTERY_DIR=$(dirname $(find /usr -name "*AstalBattery*.typelib" 2>/dev/null))

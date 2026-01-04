@@ -251,17 +251,26 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-#
-# Utilities:
-#
-    # Special keys to adjust volume via PulseAudio
-    bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
-    bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-    # Special keys to adjust brightness via brightnessctl
-    bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
-    bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Screenshot with grim
-    bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png
 
+### Utilities:
+
+# Sink volume toggle mute
+bindsym XF86AudioMute exec swayosd-client --output-volume mute-toggle
+# Source volume toggle mute
+bindsym XF86AudioMicMute exec swayosd-client --input-volume mute-toggle
+# Sink volume raise with custom value optionally with --device
+bindsym XF86AudioRaiseVolume exec swayosd-client --output-volume +5
+# Sink volume lower with custom value optionally with --device
+bindsym XF86AudioLowerVolume exec swayosd-client --output-volume -5
+# Capslock (If you don't want to use the backend)
+bindsym --release Caps_Lock exec swayosd-client --caps-lock
+# Brightness raise with custom value('+' sign needed)
+bindsym XF86MonBrightnessUp  exec swayosd-client --brightness +5
+# Brightness lower with custom value('-' sign needed)
+bindsym XF86MonBrightnessDown exec swayosd-client --brightness -5
+# Play/Pause current player
+bindsym XF86AudioPlay exec swayosd-client --playerctl play-pause
+# Next song for current player
+bindsym XF86AudioNext exec swayosd-client --playerctl next
+# Screenshot with grim
+bindsym Print exec grim -g "$(slurp)" -t png - | wl-copy -t image/png

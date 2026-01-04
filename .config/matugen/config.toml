@@ -51,3 +51,7 @@ post_hook = 'makoctl reload'
 [templates.swaylock]
 input_path = "~/.config/matugen/templates/swaylock"
 output_path = '~/.swaylock/config'
+
+[templates.swayosd]
+input_path = "~/.config/matugen/templates/swayosd.css"
+output_path = "~/.config/swayosd/style.css"
