@@ -28,5 +28,4 @@ fi
 
 echo "Copying images..."
 # Move only files that start with uppercase letter
-# TODO copy images based on JSON data
 find "$REPO_DIR/data/images" -type f -name '[A-Z]*' -exec cp {} "$PWD/.config/sway/backgrounds/" \;

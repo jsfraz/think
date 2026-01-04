@@ -6,6 +6,8 @@ Rice for my shit Elitebook 840 G1.
 
 TODO screenshot
 
+TODO activate touchpad on wake up
+
 ## Dependencies
 
 - git

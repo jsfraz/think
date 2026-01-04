@@ -5,12 +5,7 @@ import Bar from "./components/bar/Bar"
 app.start({
   css: style,
   main() {
-    // TODO Validate monitors
-
+    // Create a bar for each monitor
     app.get_monitors().map(Bar);
-
-    // TODO Media player start/stop indicator
-    // TODO Brightness change inidicator
-    // TODO Volume change indicator
   },
 })

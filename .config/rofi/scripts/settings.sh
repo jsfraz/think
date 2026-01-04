@@ -9,7 +9,6 @@ appearence=" Appearence"
 network="  Network"
 bluetooth=" Bluetooth"
 night_light="󱩌 Night light"
-sound="  Sound"
 power_profile="󰢞 Power profile"
 
 background="󰋩 Background"
@@ -54,7 +53,7 @@ active_nightlight_element=""
 if [ "$current_nightlight" = "true" ]; then
     active_nightlight_element="3"
 fi
-chosen="$(run_rofi "$appearence\n$network\n$bluetooth\n$night_light\n$sound\n$power_profile" "$settings_title" "listview {columns: 3; lines: 2;}" $active_nightlight_element)"
+chosen="$(run_rofi "$appearence\n$network\n$bluetooth\n$night_light\n$power_profile" "$settings_title" "listview {columns: 3; lines: 2;}" $active_nightlight_element)"
 case ${chosen} in
     $appearence)
         chosen_appearance="$(run_rofi "$background\n$mode\n$color" "$appearence" "listview {columns: 3; lines: 1;}")"
@@ -136,9 +135,6 @@ case ${chosen} in
         esac
         ;;
     $bluetooth)
-        # TODO
-        ;;
-    $sound)
         # TODO
         ;;
     $power_profile)
