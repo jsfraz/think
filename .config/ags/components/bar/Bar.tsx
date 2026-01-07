@@ -11,7 +11,6 @@ import Workspace from "./modules/workspace/Workspace"
 TODO Connected bluetooth devices indicator
 TODO Connected network indicators (maybe network-manager-applet in tray)!
 TODO Current power profile indicator
-TODO Volume (mute) and brightness indicator!
 */
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {

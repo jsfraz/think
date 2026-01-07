@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO other screensavers: starwars, sl...!
+
 BACKGROUND_FILE="~/.config/sway/backgrounds/LightWaves-b4b59bda185758ebaa2735e4e9fc78a2f7277c64.webp"
 COLOR="auto"
 FORCE_COLOR=false

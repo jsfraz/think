@@ -8,6 +8,7 @@ settings_title=" Settings"
 appearence=" Appearence"
 network="  Network"
 bluetooth=" Bluetooth"
+sound="  Sound"
 night_light="󱩌 Night light"
 power_profile="󰢞 Power profile"
 
@@ -51,9 +52,9 @@ current_nightlight=$(~/.config/rofi/scripts/get_config_value.sh enable_nightligh
 # Mark night_light as selected
 active_nightlight_element=""
 if [ "$current_nightlight" = "true" ]; then
-    active_nightlight_element="2"
+    active_nightlight_element="3"
 fi
-chosen="$(run_rofi "$appearence\n$network\n$night_light" "$settings_title" "listview {columns: 3; lines: 1;}" $active_nightlight_element)"
+chosen="$(run_rofi "$appearence\n$network\n$sound\n$night_light" "$settings_title" "listview {columns: 3; lines: 2;}" $active_nightlight_element)"
 case ${chosen} in
     $appearence)
         chosen_appearance="$(run_rofi "$background\n$mode\n$color" "$appearence" "listview {columns: 3; lines: 1;}")"
@@ -122,6 +123,9 @@ case ${chosen} in
         ;;
     $network)
         networkmanager_dmenu
+        ;;
+    $sound)
+        pavucontrol
         ;;
     $night_light)
         current_nightlight=$(~/.config/rofi/scripts/get_config_value.sh enable_nightlight)

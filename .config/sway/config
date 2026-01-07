@@ -10,7 +10,7 @@ set $term alacritty
 # rofi
 set $power ~/.config/rofi/scripts/power.sh
 set $settings ~/.config/rofi/scripts/settings.sh
-set $launcher rofi -show drun -theme ~/.config/rofi/launcher.rasi -show-icons -icon-theme $(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
+set $launcher rofi -show combi -combi-modes "drun,ssh" -modes combi -theme ~/.config/rofi/launcher.rasi -show-icons -icon-theme $(gsettings get org.gnome.desktop.interface icon-theme | tr -d "'")
 # Screensaver
 set $screensaver_timeout_seconds 600
 set $mouse_hide_timeout_milliseconds 600000
@@ -51,11 +51,12 @@ layer_effects "notifications" {
     blur_ignore_transparent enable;
 }
 
+# TODO uncommet
 # swayosd blur
-layer_effects "swayosd" {
-    blur enable;
-    blur_ignore_transparent enable;
-}
+# layer_effects "swayosd" {
+#    blur enable;
+#    blur_ignore_transparent enable;
+# }
 
 ### Gaps and borders
 gaps inner 10
@@ -63,19 +64,29 @@ smart_borders enable
 smart_gaps disable
 
 ### Floating windows
+
+# Zenity
 for_window [app_id="zenity"] {
     floating enable;
 }
 
+# Network manager
 for_window [app_id="nm-connection-editor"] {
     floating enable;
 }
 
+# Calculator
 for_window [app_id="qalculate"] {
     floating enable;
 }
 
+# Mega
 for_window [class="MEGAsync"] {
+    floating enable;
+}
+
+# Audio mixer
+for_window [app_id="org.pulseaudio.pavucontrol"] {
     floating enable;
 }
 

@@ -4,9 +4,7 @@
 
 Rice for my shit Elitebook 840 G1.
 
-TODO screenshot
-
-TODO activate touchpad on wake up
+TODO screenshot!
 
 ## Dependencies
 
@@ -46,6 +44,7 @@ TODO activate touchpad on wake up
 - [wlsunset](https://sr.ht/~kennylevinsen/wlsunset/)
 - [qalculate-gtk](https://github.com/Qalculate/qalculate-gtk)
 - [SwayOSD](https://github.com/ErikReider/SwayOSD) (run `sudo systemctl enable --now swayosd-libinput-backend.service` after installing)
+- [pavucontrol](https://archlinux.org/packages/extra/x86_64/pavucontrol/)
 
 TODO calendar
 TODO bluetooth manager
@@ -128,10 +127,6 @@ fi
 After generating theme using `matugen`, choose it from `btop` settings.
 
 ## rofi
-
-TODO SSH!
-
-TODO Remove unwanted apps from app launcher
 
 ### Linking config
 
