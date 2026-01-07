@@ -9,6 +9,7 @@ appearence=" Appearence"
 network="  Network"
 bluetooth=" Bluetooth"
 sound="  Sound"
+keyboard="󰌌 Keyboard"
 night_light="󱩌 Night light"
 power_profile="󰢞 Power profile"
 
@@ -52,9 +53,9 @@ current_nightlight=$(~/.config/rofi/scripts/get_config_value.sh enable_nightligh
 # Mark night_light as selected
 active_nightlight_element=""
 if [ "$current_nightlight" = "true" ]; then
-    active_nightlight_element="3"
+    active_nightlight_element="4"
 fi
-chosen="$(run_rofi "$appearence\n$network\n$sound\n$night_light" "$settings_title" "listview {columns: 3; lines: 2;}" $active_nightlight_element)"
+chosen="$(run_rofi "$appearence\n$network\n$sound\n$keyboard\n$night_light" "$settings_title" "listview {columns: 3; lines: 2;}" $active_nightlight_element)"
 case ${chosen} in
     $appearence)
         chosen_appearance="$(run_rofi "$background\n$mode\n$color" "$appearence" "listview {columns: 3; lines: 1;}")"
@@ -127,6 +128,24 @@ case ${chosen} in
     $sound)
         pavucontrol
         ;;
+    $keyboard)
+        current_keyboard=$(~/.config/rofi/scripts/get_config_value.sh keyboard)
+        # Mark keyboard as selected
+        active_keyboard_element=""
+        case $current_keyboard in
+            cs)
+                active_keyboard_element="0"
+                ;;
+            us)
+                active_keyboard_element="1"
+                ;;
+        esac
+        # Switch keyboard layout
+        chosen_keyboard="$(run_rofi "cz\nus" "$keyboard (${current_keyboard})" "listview {columns: 2; lines: 1;}" $active_keyboard_element)"
+        chosen_keyboard=$(echo "$chosen_keyboard" | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
+        ~/.config/rofi/scripts/set_keyboard.sh $chosen_keyboard
+        swaymsg input type:keyboard xkb_layout "$chosen_keyboard"
+        ;;  
     $night_light)
         current_nightlight=$(~/.config/rofi/scripts/get_config_value.sh enable_nightlight)
         case $current_nightlight in

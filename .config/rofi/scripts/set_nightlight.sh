@@ -15,9 +15,10 @@ FORCE_MODE=false
 ENABLE_NIGHTLIGHT=true
 AUTOCLICK_ENABLED=false
 AUTOCLICK_INTERVAL=1000
+KEYBOARD=cs
 
 if [ ! -f ~/.config/sway/config.json ]; then
-    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR', enable_nightlight: '$ENABLE_NIGHTLIGHT', autoclick_enabled: '$AUTOCLICK_ENABLED', autoclick_interval: '$AUTOCLICK_INTERVAL'}' > ~/.config/sway/config.json 
+    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR', enable_nightlight: '$ENABLE_NIGHTLIGHT', autoclick_enabled: '$AUTOCLICK_ENABLED', autoclick_interval: '$AUTOCLICK_INTERVAL', keyboard: "'$KEYBOARD'"}' > ~/.config/sway/config.json 
 elif [ "$1" = $(jq -r '.enable_nightlight' ~/.config/sway/config.json) ]; then
     # Exit if the selected mode is the same as the current one
     exit 0
@@ -29,8 +30,9 @@ FORCE_COLOR=$(jq -r '.force_color' ~/.config/sway/config.json)
 MODE=$(jq -r '.mode' ~/.config/sway/config.json)
 FORCE_MODE=$(jq -r '.force_mode' ~/.config/sway/config.json)
 ENABLE_NIGHTLIGHT=$1
+KEYBOARD=$(jq -r '.keyboard' ~/.config/sway/config.json)
 
-jq ".background = \"$BACKGROUND_FILE\" | .mode = \"$MODE\" | .force_mode = \"$FORCE_MODE\" | .color = \"$COLOR\" | .force_color = \"$FORCE_COLOR\" | .enable_nightlight = $ENABLE_NIGHTLIGHT | .autoclick_enabled = $AUTOCLICK_ENABLED | .autoclick_interval = $AUTOCLICK_INTERVAL" ~/.config/sway/config.json > ~/.config/sway/config.json.tmp && \
+jq ".background = \"$BACKGROUND_FILE\" | .mode = \"$MODE\" | .force_mode = \"$FORCE_MODE\" | .color = \"$COLOR\" | .force_color = \"$FORCE_COLOR\" | .enable_nightlight = $ENABLE_NIGHTLIGHT | .autoclick_enabled = $AUTOCLICK_ENABLED | .autoclick_interval = $AUTOCLICK_INTERVAL | .keyboard = \"$KEYBOARD\"" ~/.config/sway/config.json > ~/.config/sway/config.json.tmp && \
 mv ~/.config/sway/config.json.tmp ~/.config/sway/config.json
 
 # wlsunset

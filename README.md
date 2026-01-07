@@ -6,6 +6,11 @@ Rice for my shit Elitebook 840 G1.
 
 TODO screenshot!
 
+TODO calendar
+TODO bluetooth manager
+TODO notification bar
+TODO KDE Connect alternative
+
 ## Dependencies
 
 - git
@@ -46,10 +51,7 @@ TODO screenshot!
 - [SwayOSD](https://github.com/ErikReider/SwayOSD) (run `sudo systemctl enable --now swayosd-libinput-backend.service` after installing)
 - [pavucontrol](https://archlinux.org/packages/extra/x86_64/pavucontrol/)
 
-TODO calendar
-TODO bluetooth manager
-TODO notification bar
-TODO KDE Connect alternative
+## TODO Recommended apps
 
 ## swayfx
 
