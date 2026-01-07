@@ -1,0 +1,12 @@
+button.NetworkIndicator {
+    // Remove focus border
+    border: none;
+    outline: none;
+    box-shadow: none;
+
+    &:focus {
+        border: none;
+        outline: none;
+        box-shadow: none;
+    }
+}

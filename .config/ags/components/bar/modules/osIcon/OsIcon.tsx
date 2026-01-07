@@ -3,10 +3,6 @@ import { Gdk } from "ags/gtk4"
 import { execAsync } from "ags/process";
 import { createState } from "ags";
 
-function onClicked(): void {
-  app.toggle_window("main-menu");
-}
-
 export default function OsIcon() {
   const [icon, _setIcon] = createState("linux");
 
@@ -28,7 +24,6 @@ export default function OsIcon() {
     <button
       class="OsIcon transparentThenHoverFg"
       cursor={Gdk.Cursor.new_from_name("pointer", null)}
-      onClicked={onClicked}
     >
       <image
         file={icon(icon => `icons/os/${icon}.svg`)}

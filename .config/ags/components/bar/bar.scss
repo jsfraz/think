@@ -5,6 +5,7 @@
 @use "modules/trayIcons/trayIcons.scss";
 @use "modules/runCat/runCat.scss";
 @use "modules/workspace/workspace.scss";
+@use "modules/network/networkIndicator.scss";
 
 window.Bar {
   font-family: 'FiraCode Nerd Font Mono', monospace;

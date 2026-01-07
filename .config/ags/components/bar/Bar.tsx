@@ -6,10 +6,10 @@ import BatteryIndicator from "./modules/batteryIndicator/BatteryIndicator"
 import RunCat from "./modules/runCat/RunCat"
 import TrayIcons from "./modules/trayIcons/TrayIcons"
 import Workspace from "./modules/workspace/Workspace"
+import NetworkIndicator from "./modules/network/NetworkIndicator"
 
 /*
 TODO Connected bluetooth devices indicator
-TODO Connected network indicators
 TODO Current power profile indicator
 */
 
@@ -52,6 +52,7 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
         >
           <TrayIcons />
           <RunCat />
+          <NetworkIndicator />
           <Workspace />
           <BatteryIndicator />
           <Clock />
