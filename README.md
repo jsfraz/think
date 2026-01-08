@@ -1,4 +1,4 @@
-# elite
+# think
 
 <!--
 TODO calendar
@@ -12,7 +12,9 @@ TODO KDE Connect alternative
 
 [![wakatime](https://wakatime.com/badge/user/992c0ad1-7dae-4115-9198-1ba533452d32/project/2ddec85d-539d-4e8c-977e-cbe926a8b17d.svg)](https://wakatime.com/badge/user/992c0ad1-7dae-4115-9198-1ba533452d32/project/2ddec85d-539d-4e8c-977e-cbe926a8b17d)
 
-Rice for my Elitebook 840 G1 with most of the standard desktop features implemented in Sway(fx) environment.
+Rice for my Thinkpad T14 Gen 1 with most of the standard desktop features implemented in Sway(fx) environment. Enhaced and thinkpadish version of [elite](https://github.com/jsfraz/elite).
+
+TODO new images
 
 | | |
 |:---:|:---:|
@@ -53,7 +55,8 @@ Rice for my Elitebook 840 G1 with most of the standard desktop features implemen
 - [grimshot](https://sr.ht/~emersion/grim/) ([sway-contrib package](https://github.com/OctopusET/sway-contrib))
 - [matugen](https://github.com/InioX/matugen)
 - [FiraCode Nerd Font](https://www.nerdfonts.com)
-- [AstalBattery](https://aylur.github.io/astal/guide/libraries/battery), [AstalTray](https://aylur.github.io/astal/guide/libraries/tray), [AstalNetwork](https://aylur.github.io/astal/guide/libraries/network) (run `ags types` after installing)
+- [AstalBattery](https://aylur.github.io/astal/guide/libraries/battery), [AstalTray](https://aylur.github.io/astal/guide/libraries/tray) [build troubleshooting](#AstalTray-troubleshoot), [AstalNetwork](https://aylur.github.io/astal/guide/libraries/network) (run `ags types` after installing)
+- [sass](https://archlinux.org/packages/extra/x86_64/sassc/)
 - [libnotify](https://gitlab.gnome.org/GNOME/libnotify)
 - [mako](https://github.com/emersion/mako)
 - [jq](https://github.com/jqlang/jq)
@@ -77,7 +80,7 @@ Rice for my Elitebook 840 G1 with most of the standard desktop features implemen
 - [foot](https://codeberg.org/dnkl/foot)
 - [neo](https://github.com/st3w/neo)
 - [pipes.sh](https://github.com/pipeseroni/pipes.sh)
-- [cbonsai](https://gitlab.com/jallbrit/cbonsai)
+- [cbonsai](https://gitlab.com/jallbrit/cbonsai)  TODO implement
 - [asciiquarium](https://github.com/cmatsuoka/asciiquarium)
 - [lavat](https://github.com/AngelJumbo/lavat)
 - [holywood](https://github.com/dustinkirkland/hollywood)
@@ -88,6 +91,7 @@ Rice for my Elitebook 840 G1 with most of the standard desktop features implemen
 - [wlsunset](https://sr.ht/~kennylevinsen/wlsunset/)
 - [qalculate-gtk](https://github.com/Qalculate/qalculate-gtk)
 - [SwayOSD](https://github.com/ErikReider/SwayOSD) (run `sudo systemctl enable --now swayosd-libinput-backend.service` after installing)
+- [brightnessctl](https://github.com/Hummer12007/brightnessctl)
 - [pavucontrol](https://archlinux.org/packages/extra/x86_64/pavucontrol/)
 
 ## swayfx
@@ -135,7 +139,9 @@ tip: running from an xwayland terminal can cause this, for example VsCode` you n
 ### Linking config
 
 ```bash
+rm ~/.config/ags
 ln -sf $PWD/.config/ags ~/.config/ags
+ags types
 ```
 
 ### Starting manually
@@ -163,6 +169,14 @@ To install `jrch`, run the following command:
 ## matugen
 
 `matugen` is used to generate SCSS files for other programs based on the current background image.
+
+You need to install [python-pillow](https://pypi.org/project/pillow/) package and install and configure [darkman](#darkman) for custom scripts to work.
+
+### Linking config
+
+```bash
+ln -sf $PWD/.config/matugen ~/.config/matugen
+```
 
 ### Generating color schemes manually
 
@@ -193,6 +207,14 @@ if [ ! "$(tty)" = "/dev/tty1" ]; then
   echo
   fastfetch
 fi
+```
+
+# starship
+
+Add the following to the end of ~/.bashrc:
+
+```bash
+eval "$(starship init bash)"
 ```
 
 ## btop
@@ -273,6 +295,24 @@ To install the Plymouth Arch Logo theme, run the following command:
 ## Credits
 
 Inspired by [Ateon](https://github.com/Youwes09/Ateon) ([reddit](https://www.reddit.com/r/unixporn/comments/1o0yhvq/hyprland_my_nefarious_system/)), [Freosan](https://github.com/namishh/crystal/tree/freosan) ([reddit](https://www.reddit.com/r/unixporn/comments/1as3fw8/swayfx_freosan/)) and [gnome-runcat](https://github.com/win0err/gnome-runcat). Some assets/code borrowed from Ateon, gnome-runcat, [adi1090x/rofi](https://github.com/adi1090x/rofi/), [InioX/matugen-themes](https://github.com/InioX/matugen-themes).
+
+## AstalTray troubleshoot
+
+### `meson.build:44:2: ERROR: Dependency "appmenu-glib-translator" not found, tried pkgconfig and cmake`
+
+```bash
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+```
+
+### `Failed to load shared library '/usr/local/lib/libastal-tray.so.0.1.0' referenced by the typelib: libappmenu-glib-translator.so.0: shared object file cannot be opened: Directory or file does not exist`
+
+Put his line at the end of the `/etc/ld.so.conf.d/local.conf` file:
+
+```
+/usr/local/lib
+```
+
+and run `sudo ldconfig`.
 
 <!-- yeah -->
 <p align="center">

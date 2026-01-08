@@ -42,3 +42,7 @@ $hover-overlay: $surface; // Hover effect color
 .transparentThenHoverFg:hover {
   background-color: rgba($hover-overlay, 0.1);
 }
+
+image {
+  transform: scale(1.2);
+}

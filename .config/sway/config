@@ -51,12 +51,10 @@ layer_effects "notifications" {
     blur_ignore_transparent enable;
 }
 
-# TODO uncommet
-# swayosd blur
-# layer_effects "swayosd" {
-#    blur enable;
-#    blur_ignore_transparent enable;
-# }
+layer_effects "swayosd" {
+   blur enable;
+   blur_ignore_transparent enable;
+}
 
 ### Gaps and borders
 gaps inner 10
@@ -294,7 +292,7 @@ bindsym XF86AudioLowerVolume exec swayosd-client --output-volume -5
 # Capslock (If you don't want to use the backend)
 bindsym --release Caps_Lock exec swayosd-client --caps-lock
 # Brightness raise with custom value('+' sign needed)
-bindsym XF86MonBrightnessUp  exec swayosd-client --brightness +5
+bindsym XF86MonBrightnessUp exec swayosd-client --brightness +5
 # Brightness lower with custom value('-' sign needed)
 bindsym XF86MonBrightnessDown exec swayosd-client --brightness -5
 # Play/Pause current player
