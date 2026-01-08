@@ -1,18 +1,13 @@
 #!/bin/bash
 
-# Choose background file
-BACKGROUND_FILE=$(zenity --file-selection \
-    --title="Choose background image" \
-    --filename="$HOME/.config/sway/backgrounds/" \
-    --file-filter="Images | *.jpg *.jpeg *.png *.webp *.bmp" \
-    --file-filter="All files | *")
-
-# Check if user canceled the selection
-if [ -z "$BACKGROUND_FILE" ]; then
-    exit 0
+# Check if property name argument is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <none|random|matrix|pipes|aquarium|lava lamp|hollywood|train>"
+    exit 1
 fi
 
-# Create or update ~/.config/sway/config.json with background path
+# Create or update ~/.config/sway/config.json
+BACKGROUND_FILE="~/.config/sway/backgrounds/LightWaves-b4b59bda185758ebaa2735e4e9fc78a2f7277c64.webp"
 COLOR="auto"
 FORCE_COLOR=false
 MODE="auto"
@@ -24,26 +19,26 @@ KEYBOARD=cs
 SCREENSAVER=matrix
 
 if [ ! -f ~/.config/sway/config.json ]; then
-    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR', enable_nightlight: '$ENABLE_NIGHTLIGHT', autoclick_enabled: '$AUTOCLICK_ENABLED', autoclick_interval: '$AUTOCLICK_INTERVAL', keyboard: "'$KEYBOARD'", screensaver: "'$SCREENSAVER'"}' > ~/.config/sway/config.json
-elif [ "$BACKGROUND_FILE" = $(jq -r '.background' ~/.config/sway/config.json) ]; then
-    # Exit if the selected background is the same as the current one
+    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR', enable_nightlight: '$ENABLE_NIGHTLIGHT', autoclick_enabled: '$AUTOCLICK_ENABLED', autoclick_interval: '$AUTOCLICK_INTERVAL', keyboard: "'$KEYBOARD'", screensaver: "'$SCREENSAVER'"}' > ~/.config/sway/config.json 
+elif [ "$1" = $(jq -r '.enable_nightlight' ~/.config/sway/config.json) ]; then
+    # Exit if the selected mode is the same as the current one
     exit 0
 fi
 
+BACKGROUND_FILE=$(jq -r '.background' ~/.config/sway/config.json)
 COLOR=$(jq -r '.color' ~/.config/sway/config.json)
 FORCE_COLOR=$(jq -r '.force_color' ~/.config/sway/config.json)
 MODE=$(jq -r '.mode' ~/.config/sway/config.json)
 FORCE_MODE=$(jq -r '.force_mode' ~/.config/sway/config.json)
 ENABLE_NIGHTLIGHT=$(jq -r '.enable_nightlight' ~/.config/sway/config.json)
 KEYBOARD=$(jq -r '.keyboard' ~/.config/sway/config.json)
+SCREENSAVER=$1
 AUTOCLICK_ENABLED=$(jq -r '.autoclick_enabled' ~/.config/sway/config.json)
 AUTOCLICK_INTERVAL=$(jq -r '.autoclick_interval' ~/.config/sway/config.json)
-SCREENSAVER=$(jq -r '.screensaver' ~/.config/sway/config.json)
+SCREENSAVER=$1
 
 jq ".background = \"$BACKGROUND_FILE\" | .mode = \"$MODE\" | .force_mode = \"$FORCE_MODE\" | .color = \"$COLOR\" | .force_color = \"$FORCE_COLOR\" | .enable_nightlight = $ENABLE_NIGHTLIGHT | .autoclick_enabled = $AUTOCLICK_ENABLED | .autoclick_interval = $AUTOCLICK_INTERVAL | .keyboard = \"$KEYBOARD\" | .screensaver = \"$SCREENSAVER\"" ~/.config/sway/config.json > ~/.config/sway/config.json.tmp && \
 mv ~/.config/sway/config.json.tmp ~/.config/sway/config.json
 
-# matugen
-~/.config/sway/scripts/matugen.sh
-
-swaymsg reload
+# wlsunset
+~/.config/sway/scripts/wlsunset.sh

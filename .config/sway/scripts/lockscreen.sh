@@ -9,10 +9,11 @@ ENABLE_NIGHTLIGHT=true
 AUTOCLICK_ENABLED=false
 AUTOCLICK_INTERVAL=1000
 KEYBOARD=cs
+SCREENSAVER=matrix
 
 # Create ~/.config/sway/config.json with default background
 if [ ! -f ~/.config/sway/config.json ]; then
-    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR', enable_nightlight: '$ENABLE_NIGHTLIGHT', autoclick_enabled: '$AUTOCLICK_ENABLED', autoclick_interval: '$AUTOCLICK_INTERVAL', keyboard: "'$KEYBOARD'"}' > ~/.config/sway/config.json
+    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR', enable_nightlight: '$ENABLE_NIGHTLIGHT', autoclick_enabled: '$AUTOCLICK_ENABLED', autoclick_interval: '$AUTOCLICK_INTERVAL', keyboard: "'$KEYBOARD'", screensaver: "'$SCREENSAVER'"}' > ~/.config/sway/config.json
 fi
 
 BACKGROUND_FILE=$(jq -r '.background' ~/.config/sway/config.json)

@@ -55,3 +55,7 @@ output_path = '~/.swaylock/config'
 [templates.swayosd]
 input_path = "~/.config/matugen/templates/swayosd.css"
 output_path = "~/.config/swayosd/style.css"
+
+[templates.foot]
+input_path = "~/.config/matugen/templates/foot.ini"
+output_path = "~/.config/foot/foot.ini"

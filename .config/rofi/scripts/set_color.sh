@@ -16,9 +16,10 @@ ENABLE_NIGHTLIGHT=true
 AUTOCLICK_ENABLED=false
 AUTOCLICK_INTERVAL=1000
 KEYBOARD=cs
+SCREENSAVER=matrix
 
 if [ ! -f ~/.config/sway/config.json ]; then
-    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR', enable_nightlight: '$ENABLE_NIGHTLIGHT', autoclick_enabled: '$AUTOCLICK_ENABLED', autoclick_interval: '$AUTOCLICK_INTERVAL', keyboard: "'$KEYBOARD'"}' > ~/.config/sway/config.json 
+    jq -n '{background: "'$BACKGROUND_FILE'", mode: "'$MODE'", force_mode: '$FORCE_MODE', color: "'$COLOR'", force_color: '$FORCE_COLOR', enable_nightlight: '$ENABLE_NIGHTLIGHT', autoclick_enabled: '$AUTOCLICK_ENABLED', autoclick_interval: '$AUTOCLICK_INTERVAL', keyboard: "'$KEYBOARD'", screensaver: "'$SCREENSAVER'"}' > ~/.config/sway/config.json 
 elif [ "$1" = $(jq -r '.color' ~/.config/sway/config.json) ]; then
     # Exit if the selected color is the same as the current one
     exit 0
@@ -29,6 +30,9 @@ MODE=$(jq -r '.mode' ~/.config/sway/config.json)
 FORCE_MODE=$(jq -r '.force_mode' ~/.config/sway/config.json)
 ENABLE_NIGHTLIGHT=$(jq -r '.enable_nightlight' ~/.config/sway/config.json)
 KEYBOARD=$(jq -r '.keyboard' ~/.config/sway/config.json)
+AUTOCLICK_ENABLED=$(jq -r '.autoclick_enabled' ~/.config/sway/config.json)
+AUTOCLICK_INTERVAL=$(jq -r '.autoclick_interval' ~/.config/sway/config.json)
+SCREENSAVER=$(jq -r '.screensaver' ~/.config/sway/config.json)
 
 if [ "$1" = "auto" ]; then
     FORCE_COLOR=false
@@ -38,7 +42,7 @@ else
     COLOR=$1
 fi
 
-jq ".background = \"$BACKGROUND_FILE\" | .mode = \"$MODE\" | .force_mode = \"$FORCE_MODE\" | .color = \"$COLOR\" | .force_color = \"$FORCE_COLOR\" | .enable_nightlight = $ENABLE_NIGHTLIGHT | .autoclick_enabled = $AUTOCLICK_ENABLED | .autoclick_interval = $AUTOCLICK_INTERVAL | .keyboard = \"$KEYBOARD\"" ~/.config/sway/config.json > ~/.config/sway/config.json.tmp && \
+jq ".background = \"$BACKGROUND_FILE\" | .mode = \"$MODE\" | .force_mode = \"$FORCE_MODE\" | .color = \"$COLOR\" | .force_color = \"$FORCE_COLOR\" | .enable_nightlight = $ENABLE_NIGHTLIGHT | .autoclick_enabled = $AUTOCLICK_ENABLED | .autoclick_interval = $AUTOCLICK_INTERVAL | .keyboard = \"$KEYBOARD\" | .screensaver = \"$SCREENSAVER\"" ~/.config/sway/config.json > ~/.config/sway/config.json.tmp && \
 mv ~/.config/sway/config.json.tmp ~/.config/sway/config.json
 
 # matugen

@@ -13,7 +13,7 @@ def get_dominant_color(image_path):
     img = img.convert('RGB')
     img = img.resize((150, 150))  # Reduce size for faster processing
     
-    pixels = list(img.getdata())
+    pixels = list(img.get_flattened_data())
     
     # Filter out very dark and very light pixels
     pixels = [p for p in pixels if sum(p) > 50 and sum(p) < 700]

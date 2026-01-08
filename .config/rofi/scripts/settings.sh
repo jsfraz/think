@@ -10,6 +10,7 @@ network="  Network"
 bluetooth=" Bluetooth"
 sound="  Sound"
 keyboard="󰌌 Keyboard"
+screensaver="󱄄 Screensaver"
 night_light="󱩌 Night light"
 power_profile="󰢞 Power profile"
 
@@ -53,9 +54,9 @@ current_nightlight=$(~/.config/rofi/scripts/get_config_value.sh enable_nightligh
 # Mark night_light as selected
 active_nightlight_element=""
 if [ "$current_nightlight" = "true" ]; then
-    active_nightlight_element="4"
+    active_nightlight_element="5"
 fi
-chosen="$(run_rofi "$appearence\n$network\n$sound\n$keyboard\n$night_light" "$settings_title" "listview {columns: 3; lines: 2;}" $active_nightlight_element)"
+chosen="$(run_rofi "$appearence\n$network\n$sound\n$keyboard\n$screensaver\n$night_light" "$settings_title" "listview {columns: 3; lines: 2;}" $active_nightlight_element)"
 case ${chosen} in
     $appearence)
         chosen_appearance="$(run_rofi "$background\n$mode\n$color" "$appearence" "listview {columns: 3; lines: 1;}")"
@@ -78,7 +79,7 @@ case ${chosen} in
                         active_mode_element="2"
                         ;;
                 esac
-                chosen_mode="$(run_rofi "$auto_mode\n$dark_mode\n$light_mode" "$mode (${current_mode^})" "listview {columns: 3; lines: 1;}" $active_mode_element)"
+                chosen_mode="$(run_rofi "$auto_mode\n$dark_mode\n$light_mode" "$mode" "listview {columns: 3; lines: 1;}" $active_mode_element)"
                 chosen_mode=$(echo "$chosen_mode" | sed 's/^.* //' | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
                 ~/.config/rofi/scripts/set_mode.sh $chosen_mode
                 ;;
@@ -115,7 +116,7 @@ case ${chosen} in
                         active_color_element="8"
                         ;;
                 esac
-                chosen_color="$(run_rofi "$auto_color\n$blue_color\n$green_color\n$orange_color\n$pink_color\n$purple_color\n$red_color\n$teal_color\n$yellow_color" "$color (${current_color^})" "listview {columns: 3; lines: 3;}" $active_color_element)"
+                chosen_color="$(run_rofi "$auto_color\n$blue_color\n$green_color\n$orange_color\n$pink_color\n$purple_color\n$red_color\n$teal_color\n$yellow_color" "$color" "listview {columns: 3; lines: 3;}" $active_color_element)"
                 chosen_color=$(echo "$chosen_color" | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
                 echo $chosen_color
                 ~/.config/rofi/scripts/set_color.sh $chosen_color
@@ -141,11 +142,46 @@ case ${chosen} in
                 ;;
         esac
         # Switch keyboard layout
-        chosen_keyboard="$(run_rofi "cz\nus" "$keyboard (${current_keyboard})" "listview {columns: 2; lines: 1;}" $active_keyboard_element)"
+        chosen_keyboard="$(run_rofi "cz\nus" "$keyboard" "listview {columns: 2; lines: 1;}" $active_keyboard_element)"
         chosen_keyboard=$(echo "$chosen_keyboard" | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
         ~/.config/rofi/scripts/set_keyboard.sh $chosen_keyboard
         swaymsg input type:keyboard xkb_layout "$chosen_keyboard"
-        ;;  
+        ;;
+    $screensaver)
+        current_screensaver=$(~/.config/rofi/scripts/get_config_value.sh screensaver)
+        # Mark screensaver as selected
+        active_screensaver_element=""
+        case $current_screensaver in
+            none)
+                active_screensaver_element="0"
+                ;;
+            random)
+                active_screensaver_element="1"
+                ;;
+            matrix)
+                active_screensaver_element="2"
+                ;;
+            pipes)
+                active_screensaver_element="3"
+                ;;
+            aquarium)
+                active_screensaver_element="4"
+                ;;
+            lavalamp)
+                active_screensaver_element="5"
+                ;;
+            hollywood)
+                active_screensaver_element="6"
+                ;;
+            train)
+                active_screensaver_element="7"
+                ;;
+        esac
+        # Choose screensaver
+        chosen_screensaver="$(run_rofi "None\nRandom\nMatrix\nPipes\nAquarium\nLavalamp\nHollywood\nTrain" "$screensaver" "listview {columns: 3; lines: 3;}" $active_screensaver_element)"
+        chosen_screensaver=$(echo "$chosen_screensaver" | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
+        ~/.config/rofi/scripts/set_screensaver.sh $chosen_screensaver
+        ;;
     $night_light)
         current_nightlight=$(~/.config/rofi/scripts/get_config_value.sh enable_nightlight)
         case $current_nightlight in

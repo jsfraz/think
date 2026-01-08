@@ -43,6 +43,12 @@ TODO KDE Connect alternative
 - [adobe-source-han-sans-jp-fonts](https://archlinux.org/packages/?name=adobe-source-han-sans-jp-fonts) (or any other japanese font of your choice)
 - [foot](https://codeberg.org/dnkl/foot)
 - [neo](https://github.com/st3w/neo)
+- [pipes.sh](https://github.com/pipeseroni/pipes.sh)
+- [cbonsai](https://gitlab.com/jallbrit/cbonsai)
+- [asciiquarium](https://github.com/cmatsuoka/asciiquarium)
+- [lavat](https://github.com/AngelJumbo/lavat)
+- [holywood](https://github.com/dustinkirkland/hollywood)
+- [sl](https://archlinux.org/packages/extra/x86_64/sl/)
 - [networkmanager-dmenu](https://github.com/firecat53/networkmanager-dmenu)
 - [nm-connection-editor](https://archlinux.org/packages/?name=nm-connection-editor)
 - [networkmanager-openvpn](https://archlinux.org/packages/?name=networkmanager-openvpn) (with `libnma-gtk4` and `libnma` [packages](https://wiki.archlinux.org/title/NetworkManager#OpenVPN_connections_fail_with_%22secrets:_failed_to_request_VPN_secrets%22_warn))
@@ -50,8 +56,6 @@ TODO KDE Connect alternative
 - [qalculate-gtk](https://github.com/Qalculate/qalculate-gtk)
 - [SwayOSD](https://github.com/ErikReider/SwayOSD) (run `sudo systemctl enable --now swayosd-libinput-backend.service` after installing)
 - [pavucontrol](https://archlinux.org/packages/extra/x86_64/pavucontrol/)
-
-## TODO Recommended apps
 
 ## swayfx
 
