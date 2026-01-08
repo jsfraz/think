@@ -32,7 +32,7 @@ Rice for my Elitebook 840 G1 with most of the standard desktop features implemen
 - **Smart gaps and borders** - 10px gaps with smart border management
 - **Night light** - Blue light filter based on location
 - **Autoclick** - Auto-clicker with configurable interval
-- **Keyboard layouts** - Toggle between Czech and US
+- **Keyboard layouts** - Switch keyboard layouts
 - **Media controls** - Volume, brightness, and playback keys with SwayOSD
 - **Screenshots** - Region capture with grim/slurp
 - **Lock screen** - swaylock-effects with wallpaper and auto-lock
@@ -40,7 +40,7 @@ Rice for my Elitebook 840 G1 with most of the standard desktop features implemen
 - **GRUB theme** - HyperFluent theme for Arch
 - **Plymouth theme** - Animated Arch boot splash
 - **Floating rules** - For calculator, network manager, audio mixer, etc.
-- **custom config manager** - CLI tool for managing all settings
+- **Custom config manager** - CLI tool for managing all settings
 
 ## Dependencies
 
