@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# TODO other screensavers: starwars
-
 BACKGROUND_FILE=$(jrch get background)
 # Expand ~ to home directory
 BACKGROUND_FILE_EXPANDED="${BACKGROUND_FILE/#\~/$HOME}"
@@ -30,7 +28,6 @@ fi
 COLOR_HEX=$(~/.config/sway/scripts/get_color.py -color2hex $COLOR)
 
 case $SCREENSAVER in
-    # TODO
     matrix)
         # Supported config colors: red, blue, green orange, pink, purple, red, teal, yellow
         # Chosen supported neo-matrix colors: green, red, blue, cyan, purple, yellow, orange, pink

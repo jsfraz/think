@@ -1,15 +1,46 @@
 # elite
 
+<!--
+TODO calendar
+
+TODO bluetooth manager
+
+TODO notification bar
+
+TODO KDE Connect alternative
+-->
+
 [![wakatime](https://wakatime.com/badge/user/992c0ad1-7dae-4115-9198-1ba533452d32/project/2ddec85d-539d-4e8c-977e-cbe926a8b17d.svg)](https://wakatime.com/badge/user/992c0ad1-7dae-4115-9198-1ba533452d32/project/2ddec85d-539d-4e8c-977e-cbe926a8b17d)
 
-Rice for my shit Elitebook 840 G1.
+Rice for my Elitebook 840 G1 with most of the standard desktop features implemented in Sway(fx) environment.
 
-TODO screenshot!
+| | |
+|:---:|:---:|
+| ![Screenshot 1](images/1.png) | ![Screenshot 2](images/2.png) |
+| ![Screenshot 3](images/3.png) | ![Screenshot 4](images/4.png) |
+| ![Screenshot 5](images/5.png) | ![Screenshot 6](images/6.png) |
 
-TODO calendar
-TODO bluetooth manager
-TODO notification bar
-TODO KDE Connect alternative
+## Features
+
+- **Dynamic theming** - Auto color generation from wallpaper using matugen
+- **Light/Dark mode** - Auto switching based on time or manual control
+- **9 accent colors** - Blue, green, orange, pink, purple, red, teal, yellow, or auto-detect
+- **Custom status bar** - AGS bar with workspaces, tray, network, battery, clock, and RunCat animation
+- **Rofi menus** - App launcher, settings, network, and power menu with blur
+- **7 screensavers** - Matrix, pipes, aquarium, lavalamp, hollywood, train, or random
+- **SwayFX enhancements** - Rounded corners and blur effects
+- **Smart gaps and borders** - 10px gaps with smart border management
+- **Night light** - Blue light filter based on location
+- **Autoclick** - Auto-clicker with configurable interval
+- **Keyboard layouts** - Toggle between Czech and US
+- **Media controls** - Volume, brightness, and playback keys with SwayOSD
+- **Screenshots** - Region capture with grim/slurp
+- **Lock screen** - swaylock-effects with wallpaper and auto-lock
+- **Background collection** - 1000+ GNOME wallpapers installer
+- **GRUB theme** - HyperFluent theme for Arch
+- **Plymouth theme** - Animated Arch boot splash
+- **Floating rules** - For calculator, network manager, audio mixer, etc.
+- **custom config manager** - CLI tool for managing all settings
 
 ## Dependencies
 
