@@ -17,6 +17,7 @@ TODO KDE Connect alternative
 - [swayfx](https://github.com/WillPower3309/swayfx)
 - [ags](https://github.com/Aylur/ags)
 - [golang 1.25.5](https://go.dev/dl/)
+- [jrch](jrch/README.md)
 - [rofi-wayland](https://github.com/davatorium/rofi)
 - [grimshot](https://sr.ht/~emersion/grim/) ([sway-contrib package](https://github.com/OctopusET/sway-contrib))
 - [matugen](https://github.com/InioX/matugen)
@@ -139,7 +140,7 @@ To run some program you need to generate color schemes using `matugen`:
 ```bash
 matugen image <image_path> -m <dark|light>
 # or using this rice background config
-BACKGROUND_FILE=$(jq -r '.background' ~/.config/sway/config.json)
+BACKGROUND_FILE=$(jrch get background)
 matugen image $BACKGROUND_FILE -m <dark|light>
 ```
 

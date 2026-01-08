@@ -10,7 +10,7 @@ import (
 )
 
 type Config struct {
-	Background        string `json:"background" validate:"required,filepath"`
+	Background        string `json:"background"`
 	Mode              string `json:"mode" validate:"required,oneof=light dark auto"`
 	ForceMode         bool   `json:"force_mode"`
 	Color             string `json:"color" validate:"required,oneof=auto blue green orange pink purple red teal yellow"`
@@ -18,7 +18,7 @@ type Config struct {
 	EnableNightLight  bool   `json:"enable_night_light"`
 	AutoclickEnabled  bool   `json:"autoclick_enabled"`
 	AutoclickInterval int    `json:"autoclick_interval" validate:"required"`
-	Keyboard          string `json:"keyboard" validate:"required,oneof=cs us"`
+	Keyboard          string `json:"keyboard" validate:"required,oneof=cz us"`
 	Screensaver       string `json:"screensaver" validate:"required,oneof=none random matrix pipes aquarium lavalamp hollywood train"`
 }
 
@@ -32,7 +32,7 @@ var (
 		EnableNightLight:  true,
 		AutoclickEnabled:  false,
 		AutoclickInterval: 1000,
-		Keyboard:          "cs",
+		Keyboard:          "cz",
 		Screensaver:       "matrix",
 	}
 

@@ -5,7 +5,6 @@
 all-gnome-backgrounds/
 HyperFluent-GRUB-Theme/
 .config/sway/backgrounds/
-.config/sway/config.json
 .config/sway/colors.conf
 
 # alacritty
@@ -13,3 +12,6 @@ HyperFluent-GRUB-Theme/
 
 # rofi
 .config/rofi/colors.rasi
+
+# golang
+jrch/jrch

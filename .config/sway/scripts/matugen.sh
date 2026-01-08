@@ -1,17 +1,17 @@
 #!/bin/bash
 
-BACKGROUND_FILE=$(jq -r '.background' ~/.config/sway/config.json)
+BACKGROUND_FILE=$(jrch get background)
 # Expand ~ to home directory
 BACKGROUND_FILE_EXPANDED="${BACKGROUND_FILE/#\~/$HOME}"
-FORCE_COLOR=$(jq -r '.force_color' ~/.config/sway/config.json)
+FORCE_COLOR=$(jrch get force_color)
 if [ $FORCE_COLOR = true ]; then
-    COLOR=$(jq -r '.color' ~/.config/sway/config.json)
+    COLOR=$(jrch get color)
 else
     COLOR=$(~/.config/sway/scripts/get_color.py $BACKGROUND_FILE_EXPANDED)
 fi
-FORCE_MODE=$(jq -r '.force_mode' ~/.config/sway/config.json)
+FORCE_MODE=$(jrch get force_mode)
 if [ $FORCE_MODE = true ]; then
-    MODE=$(jq -r '.mode' ~/.config/sway/config.json)
+    MODE=$(jrch get mode)
 else
     MODE=$(darkman get)
 fi 

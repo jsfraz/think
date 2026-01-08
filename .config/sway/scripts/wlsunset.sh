@@ -1,7 +1,7 @@
 #!/bin/bash
 
-ENABLE_NIGHTLIGHT=$(jq -r '.enable_nightlight' ~/.config/sway/config.json)
-if [ $ENABLE_NIGHTLIGHT = false ]; then
+ENABLE_NIGHT_LIGHT=$(jrch get enable_night_light)
+if [ $ENABLE_NIGHT_LIGHT = false ]; then
     killall -q wlsunset
     exit 0
 else

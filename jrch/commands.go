@@ -112,7 +112,7 @@ Available fields:
   enable_night_light - Enable night light feature
   autoclick_enabled  - Enable autoclick feature
   autoclick_interval - Autoclick interval in milliseconds
-  keyboard           - Keyboard layout (cs, us)
+  keyboard           - Keyboard layout (cz, us)
   screensaver        - Screensaver type (none, random, matrix, pipes, aquarium, lavalamp, hollywood, train)
 
 Example:
@@ -273,12 +273,12 @@ Available fields and valid values:
   enable_night_light <true|false>- Enable night light feature
   autoclick_enabled <true|false> - Enable autoclick feature
   autoclick_interval <number>    - Autoclick interval in milliseconds
-  keyboard <cs|us>               - Keyboard layout
+  keyboard <cz|us>               - Keyboard layout
   screensaver <none|random|...>  - Screensaver type
 
 Examples:
   jrch set mode dark
-  jrch set keyboard cs
+  jrch set keyboard cz
   jrch set autoclick_interval 1500
   jrch set background /home/user/wallpaper.jpg`
 }
