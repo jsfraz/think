@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# TODO fix, doesn't stop
-
 AUTOCLICK_ENABLED=$(jrch get autoclick_enabled)
 AUTOCLICK_INTERVAL=$(jrch get autoclick_interval)
 

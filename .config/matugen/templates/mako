@@ -1,7 +1,7 @@
 background-color={{colors.primary_container.default.hex}}4d
 text-color={{colors.on_surface.default.hex}}
 border-color={{colors.primary_container.default.hex}}e8
-font=FiraCode Nerd Font Mono 10
+font=FiraCode Nerd Font Mono 12
 padding=10
 border-size=1
 border-radius=10
