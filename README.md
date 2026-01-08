@@ -16,6 +16,7 @@ TODO KDE Connect alternative
 - git
 - [swayfx](https://github.com/WillPower3309/swayfx)
 - [ags](https://github.com/Aylur/ags)
+- [golang 1.25.5](https://go.dev/dl/)
 - [rofi-wayland](https://github.com/davatorium/rofi)
 - [grimshot](https://sr.ht/~emersion/grim/) ([sway-contrib package](https://github.com/OctopusET/sway-contrib))
 - [matugen](https://github.com/InioX/matugen)
@@ -93,6 +94,40 @@ Download all the [GOOD](https://zebreus.github.io/all-gnome-backgrounds/) backgr
 ./install_all_gnome_backgrounds.sh
 ```
 
+## ags
+
+> [!NOTE]
+> If you run into this error: `can not initialize layer shell on window: layer shell not supported
+tip: running from an xwayland terminal can cause this, for example VsCode` you need to run this in a native wayland terminal like `alacritty` or `foot`.
+
+### Linking config
+
+```bash
+ln -sf $PWD/.config/ags ~/.config/ags
+```
+
+### Starting manually
+
+When starting `ags` manually, make sure the `GI_TYPELIB_PATH` includes the path to `AstalBattery` typelib:
+
+```bash
+export GI_TYPELIB_PATH=$(dirname $(find /usr -name "*AstalBattery*.typelib" 2>/dev/null)):$GI_TYPELIB_PATH
+ags run
+```
+
+This is done automatically when using provided `sway` config.
+
+## jrch
+
+A tool for managing SwayWM rice environment configuration.
+
+### Installing jrch
+To install `jrch`, run the following command:
+
+```bash
+./install_jrch.sh
+```
+
 ## matugen
 
 `matugen` is used to generate SCSS files for other programs based on the current background image.
@@ -141,32 +176,9 @@ ln -sf $PWD/.config/rofi ~/.config/rofi
 ln -sf $PWD/.config/networkmanager-dmenu ~/.config/networkmanager-dmenu
 ```
 
-## ags
-
-> [!NOTE]
-> If you run into this error: `can not initialize layer shell on window: layer shell not supported
-tip: running from an xwayland terminal can cause this, for example VsCode` you need to run this in a native wayland terminal like `alacritty` or `foot`.
-
-### Linking config
-
-```bash
-ln -sf $PWD/.config/ags ~/.config/ags
-```
-
-### Starting manually
-
-When starting `ags` manually, make sure the `GI_TYPELIB_PATH` includes the path to `AstalBattery` typelib:
-
-```bash
-export GI_TYPELIB_PATH=$(dirname $(find /usr -name "*AstalBattery*.typelib" 2>/dev/null)):$GI_TYPELIB_PATH
-ags run
-```
-
-This is done automatically when using provided `sway` config.
-
 ## ydotool
 
-You need to run `ydotool` deamon as root to use cursor positioning script. Create a systemd service file at `/etc/systemd/system/ydotool.service` with
+You need to run `ydotool` deamon as root to use the autoclicker. Create a systemd service file at `/etc/systemd/system/ydotool.service` with
 
 ```bash
 [Unit]

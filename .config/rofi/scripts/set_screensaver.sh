@@ -2,7 +2,7 @@
 
 # Check if property name argument is provided
 if [ -z "$1" ]; then
-    echo "Usage: $0 <none|random|matrix|pipes|aquarium|lava lamp|hollywood|train>"
+    echo "Usage: $0 <none|random|matrix|pipes|aquarium|lavalamp|hollywood|train>"
     exit 1
 fi
 

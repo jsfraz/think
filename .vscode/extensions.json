@@ -1,5 +1,7 @@
 {
     "recommendations": [
-        "gruntfuggly.todo-tree"
+        "gruntfuggly.todo-tree",
+        "golang.go",
+        "lijunawk.vscodegocomment"
     ]
 }
