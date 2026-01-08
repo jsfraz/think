@@ -10,7 +10,7 @@ TODO notification bar
 TODO KDE Connect alternative
 -->
 
-[![wakatime](https://wakatime.com/badge/user/992c0ad1-7dae-4115-9198-1ba533452d32/project/2ddec85d-539d-4e8c-977e-cbe926a8b17d.svg)](https://wakatime.com/badge/user/992c0ad1-7dae-4115-9198-1ba533452d32/project/2ddec85d-539d-4e8c-977e-cbe926a8b17d)
+[![wakatime](https://wakatime.com/badge/user/992c0ad1-7dae-4115-9198-1ba533452d32/project/a93944c4-b4c6-4305-bb48-ef8ed6ecf516.svg)](https://wakatime.com/badge/user/992c0ad1-7dae-4115-9198-1ba533452d32/project/a93944c4-b4c6-4305-bb48-ef8ed6ecf516)
 
 Rice for my Thinkpad T14 Gen 1 with most of the standard desktop features implemented in Sway(fx) environment. Enhaced and thinkpadish version of [elite](https://github.com/jsfraz/elite).
 
@@ -298,13 +298,13 @@ Inspired by [Ateon](https://github.com/Youwes09/Ateon) ([reddit](https://www.red
 
 ## AstalTray troubleshoot
 
-### `meson.build:44:2: ERROR: Dependency "appmenu-glib-translator" not found, tried pkgconfig and cmake`
+### Error `meson.build:44:2: ERROR: Dependency "appmenu-glib-translator" not found, tried pkgconfig and cmake`
 
 ```bash
 export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 ```
 
-### `Failed to load shared library '/usr/local/lib/libastal-tray.so.0.1.0' referenced by the typelib: libappmenu-glib-translator.so.0: shared object file cannot be opened: Directory or file does not exist`
+### Error `Failed to load shared library '/usr/local/lib/libastal-tray.so.0.1.0' referenced by the typelib: libappmenu-glib-translator.so.0: shared object file cannot be opened: Directory or file does not exist`
 
 Put his line at the end of the `/etc/ld.so.conf.d/local.conf` file:
 
