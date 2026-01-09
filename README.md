@@ -130,6 +130,22 @@ Download all the [GOOD](https://zebreus.github.io/all-gnome-backgrounds/) backgr
 ./install_all_gnome_backgrounds.sh
 ```
 
+Recommanded wallpapers:
+
+- `Godafoss_Iceland`
+- `Aqua`
+- `Icescape`
+- `Leaf`
+- `LightWaves` (both)
+- `SeaSunset`
+- `Spaceflare`
+- `Storm`
+- `SundownDunes` (both)
+- `Tree`
+- `TwoWings` (both)
+- `Waterfalls`
+- `Waves` (last)
+
 ## ags
 
 > [!NOTE]
