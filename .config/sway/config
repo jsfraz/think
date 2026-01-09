@@ -14,7 +14,7 @@ set $launcher rofi -show combi -combi-modes "drun,ssh" -modes combi -theme ~/.co
 # Screensaver
 set $screensaver_timeout_seconds 600
 set $mouse_hide_timeout_milliseconds 600000
-set $lock_timeout_seconds 1200
+set $lock_timeout_seconds 3600
 
 # Get current windows:
 # swaymsg -t get_tree
@@ -51,10 +51,12 @@ layer_effects "notifications" {
     blur_ignore_transparent enable;
 }
 
-layer_effects "swayosd" {
-   blur enable;
-   blur_ignore_transparent enable;
-}
+# TODO fix black edges
+# swayosd blur
+# layer_effects "swayosd" {
+#   blur enable;
+#   blur_ignore_transparent enable;
+# }
 
 ### Gaps and borders
 gaps inner 10

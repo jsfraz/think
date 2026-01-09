@@ -43,6 +43,32 @@ def color_name_to_hex(color_name):
     }
     return color_map.get(color_name.lower(), "#808080")
 
+def lighten_hex_color(hex_color, hue_shift=45):
+    """Shifts the hue of a color to make it 'lighter' in the spectrum.
+    E.g., red -> orange -> yellow, blue -> cyan -> green, etc."""
+    hex_color = hex_color.lstrip('#')
+    r = int(hex_color[0:2], 16)
+    g = int(hex_color[2:4], 16)
+    b = int(hex_color[4:6], 16)
+    
+    # Convert to HSV
+    h, s, v = colorsys.rgb_to_hsv(r/255.0, g/255.0, b/255.0)
+    
+    # Shift hue (h is 0-1, so divide degrees by 360)
+    h = (h + hue_shift / 360.0) % 1.0
+    
+    # Slightly increase brightness and saturation for a "lighter" feel
+    v = min(1.0, v * 1.1)
+    s = min(1.0, s * 0.9)
+    
+    # Convert back to RGB
+    r, g, b = colorsys.hsv_to_rgb(h, s, v)
+    r = int(r * 255)
+    g = int(g * 255)
+    b = int(b * 255)
+    
+    return "#{:02x}{:02x}{:02x}".format(r, g, b)
+
 def rgb_to_color_name(rgb):
     """Converts RGB to color name."""
     r, g, b = rgb
@@ -79,11 +105,12 @@ def rgb_to_color_name(rgb):
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python get_color.py [-hex] [-color2hex] <image_path|color_name>", file=sys.stderr)
+        print("Usage: python get_color.py [-hex] [-color2hex] [-lighten] <image_path|color_name>", file=sys.stderr)
         sys.exit(1)
     
     hex_output = False
     color2hex_mode = False
+    lighten_mode = False
     target = None
     
     # Parse arguments
@@ -92,24 +119,31 @@ def main():
             hex_output = True
         elif sys.argv[i] == "-color2hex":
             color2hex_mode = True
+        elif sys.argv[i] == "-lighten":
+            lighten_mode = True
         else:
             target = sys.argv[i]
     
     if not target:
-        print("Usage: python get_color.py [-hex] [-color2hex] <image_path|color_name>", file=sys.stderr)
+        print("Usage: python get_color.py [-hex] [-color2hex] [-lighten] <image_path|color_name>", file=sys.stderr)
         sys.exit(1)
     
     try:
         if color2hex_mode:
             # Convert color name to hex
             hex_code = color_name_to_hex(target)
+            if lighten_mode:
+                hex_code = lighten_hex_color(hex_code)
             print(hex_code)
         else:
             # Get dominant color from image
             dominant_rgb = get_dominant_color(target)
             
             if hex_output:
-                print(rgb_to_hex(dominant_rgb))
+                hex_code = rgb_to_hex(dominant_rgb)
+                if lighten_mode:
+                    hex_code = lighten_hex_color(hex_code)
+                print(hex_code)
             else:
                 color_name = rgb_to_color_name(dominant_rgb)
                 print(color_name)

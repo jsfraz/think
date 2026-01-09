@@ -2,6 +2,7 @@
     "recommendations": [
         "gruntfuggly.todo-tree",
         "golang.go",
-        "lijunawk.vscodegocomment"
+        "lijunawk.vscodegocomment",
+        "ms-python.python"
     ]
 }

@@ -54,7 +54,8 @@ case $SCREENSAVER in
         foot -a screensaver --font="FiraCode Nerd Font Mono":size=14 asciiquarium
         ;;
     lavalamp)
-        foot -a screensaver --font="FiraCode Nerd Font Mono":size=5 lavat -c ${COLOR_HEX#\#} -k ${COLOR_HEX#\#} -g
+        color_lighter_hex=$(~/.config/sway/scripts/get_color.py -color2hex -lighten $COLOR)
+        foot -a screensaver lavat -c ${color_lighter_hex#\#} -k ${COLOR_HEX#\#} -g
         ;;
     hollywood)
         foot -a screensaver --font="FiraCode Nerd Font Mono":size=10 bash -c "sleep 0.1 && hollywood"
