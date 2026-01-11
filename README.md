@@ -6,8 +6,6 @@ TODO calendar
 TODO bluetooth manager
 
 TODO notification bar
-
-TODO KDE Connect alternative
 -->
 
 [![wakatime](https://wakatime.com/badge/user/992c0ad1-7dae-4115-9198-1ba533452d32/project/a93944c4-b4c6-4305-bb48-ef8ed6ecf516.svg)](https://wakatime.com/badge/user/992c0ad1-7dae-4115-9198-1ba533452d32/project/a93944c4-b4c6-4305-bb48-ef8ed6ecf516)
@@ -137,6 +135,7 @@ Recommanded wallpapers:
 - `Icescape`
 - `Leaf`
 - `LightWaves` (both)
+- `Road` (both)
 - `SeaSunset`
 - `Spaceflare`
 - `Storm`
@@ -308,10 +307,6 @@ To install the Plymouth Arch Logo theme, run the following command:
 ./install_plymouth_theme.sh
 ```
 
-## Credits
-
-Inspired by [Ateon](https://github.com/Youwes09/Ateon) ([reddit](https://www.reddit.com/r/unixporn/comments/1o0yhvq/hyprland_my_nefarious_system/)), [Freosan](https://github.com/namishh/crystal/tree/freosan) ([reddit](https://www.reddit.com/r/unixporn/comments/1as3fw8/swayfx_freosan/)) and [gnome-runcat](https://github.com/win0err/gnome-runcat). Some assets/code borrowed from Ateon, gnome-runcat, [adi1090x/rofi](https://github.com/adi1090x/rofi/), [InioX/matugen-themes](https://github.com/InioX/matugen-themes).
-
 ## AstalTray troubleshoot
 
 ### Error `meson.build:44:2: ERROR: Dependency "appmenu-glib-translator" not found, tried pkgconfig and cmake`
@@ -329,6 +324,10 @@ Put his line at the end of the `/etc/ld.so.conf.d/local.conf` file:
 ```
 
 and run `sudo ldconfig`.
+
+## Credits
+
+Inspired by [Ateon](https://github.com/Youwes09/Ateon) ([reddit](https://www.reddit.com/r/unixporn/comments/1o0yhvq/hyprland_my_nefarious_system/)), [Freosan](https://github.com/namishh/crystal/tree/freosan) ([reddit](https://www.reddit.com/r/unixporn/comments/1as3fw8/swayfx_freosan/)) and [gnome-runcat](https://github.com/win0err/gnome-runcat). Some assets/code borrowed from Ateon, gnome-runcat, [adi1090x/rofi](https://github.com/adi1090x/rofi/), [InioX/matugen-themes](https://github.com/InioX/matugen-themes).
 
 <!-- yeah -->
 <p align="center">

@@ -74,6 +74,5 @@ case ${chosen} in
     $suspend)
         ~/.config/sway/scripts/lockscreen.sh
         systemctl suspend
-        # TODO psmouse
         ;;
 esac
