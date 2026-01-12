@@ -96,8 +96,8 @@ for_window [app_id="screensaver"] {
 } 
 
 ### Autostart
-exec ~/.config/sway/scripts/matugen.sh && ~/.config/sway/scripts/exec.sh
 exec_always ~/.config/sway/scripts/exec_always.sh
+exec ~/.config/sway/scripts/matugen.sh && ~/.config/sway/scripts/exec.sh
 
 ### Idle configuration
 
