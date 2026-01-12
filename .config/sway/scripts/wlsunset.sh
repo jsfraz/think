@@ -8,6 +8,6 @@ else
     if ! pgrep -x wlsunset >/dev/null; then
         lat=$(grep '^lat:' ~/.config/darkman/config.yaml | awk '{print $2}')
         lng=$(grep '^lng:' ~/.config/darkman/config.yaml | awk '{print $2}')
-        wlsunset -t 0 -T 10000 -l $lat -L $lng &
+        wlsunset -l $lat -L $lng -t 0 &
     fi
 fi

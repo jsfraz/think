@@ -13,3 +13,6 @@ sleep 2; swaymsg '[class="MEGAsync"] move scratchpad'
 # Betterbird
 betterbird &
 sleep 3; swaymsg '[app_id="betterbird"] move scratchpad'
+
+# wayvnc
+wayvnc 0.0.0.0 -f 60 -k $(jrch get keyboard) &

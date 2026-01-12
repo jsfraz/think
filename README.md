@@ -91,6 +91,7 @@ TODO new images
 - [SwayOSD](https://github.com/ErikReider/SwayOSD) (run `sudo systemctl enable --now swayosd-libinput-backend.service` after installing)
 - [brightnessctl](https://github.com/Hummer12007/brightnessctl)
 - [pavucontrol](https://archlinux.org/packages/extra/x86_64/pavucontrol/)
+- [wayvnc](https://github.com/any1/wayvnc)
 
 ## swayfx
 

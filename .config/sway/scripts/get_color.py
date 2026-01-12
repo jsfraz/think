@@ -1,6 +1,25 @@
 #!/usr/bin/env python3
+"""
+Image Color Extraction and Manipulation Utility.
 
-# sudo pacman -S python-pillow
+This script extracts the dominant color from an image and provides various
+color manipulation utilities including:
+- Extracting dominant color from images
+- Converting colors between RGB, hex, and named color formats
+- Shifting hue to create lighter/warmer color variations
+
+Dependencies:
+    python-pillow: Install via `sudo pacman -S python-pillow`
+
+Usage:
+    python get_color.py [-hex] [-color2hex] [-lighten] <image_path|color_name>
+
+Examples:
+    python get_color.py image.jpg           # Get color name from image
+    python get_color.py -hex image.jpg      # Get hex color from image
+    python get_color.py -color2hex red      # Convert 'red' to hex
+    python get_color.py -hex -lighten img.jpg  # Get lightened hex from image
+"""
 
 import sys
 from PIL import Image
@@ -8,7 +27,21 @@ from collections import Counter
 import colorsys
 
 def get_dominant_color(image_path):
-    """Gets the dominant color from an image."""
+    """
+    Extract the most dominant color from an image.
+
+    Opens the image, resizes it to 150x150 pixels for faster processing,
+    and finds the most frequently occurring color. Very dark (sum < 50)
+    and very light (sum > 700) pixels are filtered out to avoid
+    blacks/whites dominating the result.
+
+    Args:
+        image_path: Path to the image file to analyze.
+
+    Returns:
+        A tuple of (R, G, B) values representing the dominant color.
+        Returns (128, 128, 128) as fallback if no suitable pixels found.
+    """
     img = Image.open(image_path)
     img = img.convert('RGB')
     img = img.resize((150, 150))  # Reduce size for faster processing
@@ -26,11 +59,39 @@ def get_dominant_color(image_path):
     return most_common
 
 def rgb_to_hex(rgb):
-    """Converts RGB tuple to hex color code."""
+    """
+    Convert an RGB color tuple to a hexadecimal color string.
+
+    Args:
+        rgb: A tuple of (R, G, B) integer values (0-255 each).
+
+    Returns:
+        A hex color string in the format '#rrggbb'.
+
+    Example:
+        >>> rgb_to_hex((255, 128, 0))
+        '#ff8000'
+    """
     return "#{:02x}{:02x}{:02x}".format(rgb[0], rgb[1], rgb[2])
 
 def color_name_to_hex(color_name):
-    """Converts color name to hex code."""
+    """
+    Convert a predefined color name to its corresponding hex code.
+
+    Supports a limited set of color names: red, orange, yellow, green,
+    teal, blue, purple, and pink. The lookup is case-insensitive.
+
+    Args:
+        color_name: A string representing the color name.
+
+    Returns:
+        A hex color string in the format '#rrggbb'.
+        Returns '#808080' (gray) if the color name is not recognized.
+
+    Example:
+        >>> color_name_to_hex('blue')
+        '#3232ff'
+    """
     color_map = {
         "red": "#cc0000",
         "orange": "#e59400",
@@ -44,8 +105,26 @@ def color_name_to_hex(color_name):
     return color_map.get(color_name.lower(), "#808080")
 
 def lighten_hex_color(hex_color, hue_shift=45):
-    """Shifts the hue of a color to make it 'lighter' in the spectrum.
-    E.g., red -> orange -> yellow, blue -> cyan -> green, etc."""
+    """
+    Shift the hue of a color to create a 'lighter' or warmer appearance.
+
+    This function rotates the hue in the HSV color space, creating
+    transitions like red -> orange -> yellow, or blue -> cyan -> green.
+    It also slightly increases brightness (by 10%) and decreases
+    saturation (by 10%) for a softer, lighter feel.
+
+    Args:
+        hex_color: A hex color string (with or without leading '#').
+        hue_shift: The amount to shift the hue in degrees (0-360).
+                   Default is 45 degrees.
+
+    Returns:
+        A hex color string in the format '#rrggbb' with the shifted hue.
+
+    Example:
+        >>> lighten_hex_color('#cc0000')  # red
+        '#cc6600'  # shifts toward orange
+    """
     hex_color = hex_color.lstrip('#')
     r = int(hex_color[0:2], 16)
     g = int(hex_color[2:4], 16)
@@ -70,7 +149,32 @@ def lighten_hex_color(hex_color, hue_shift=45):
     return "#{:02x}{:02x}{:02x}".format(r, g, b)
 
 def rgb_to_color_name(rgb):
-    """Converts RGB to color name."""
+    """
+    Convert an RGB color to a human-readable color name.
+
+    Maps the RGB color to one of eight basic color names based on the
+    hue value in HSV color space. The hue ranges (in degrees) are:
+        - red:    345-360 and 0-15
+        - orange: 15-35
+        - yellow: 35-65
+        - green:  65-150
+        - teal:   150-180
+        - blue:   180-260
+        - purple: 260-290
+        - pink:   290-345 (with brightness consideration near red)
+
+    Args:
+        rgb: A tuple of (R, G, B) integer values (0-255 each).
+
+    Returns:
+        A string representing the color name (one of: red, orange,
+        yellow, green, teal, blue, purple, pink). Defaults to 'blue'
+        as a fallback.
+
+    Example:
+        >>> rgb_to_color_name((255, 128, 0))
+        'orange'
+    """
     r, g, b = rgb
     h, s, v = colorsys.rgb_to_hsv(r/255.0, g/255.0, b/255.0)
     
@@ -104,6 +208,21 @@ def rgb_to_color_name(rgb):
         return "blue"  # Fallback
 
 def main():
+    """
+    Main entry point for the color extraction utility.
+
+    Parses command-line arguments and executes the appropriate action:
+        - No flags: Extract dominant color name from image
+        - -hex: Output color as hex code instead of name
+        - -color2hex: Convert a color name to hex code
+        - -lighten: Apply hue shift to lighten the resulting color
+
+    The flags can be combined (e.g., -hex -lighten).
+
+    Exit codes:
+        0: Success
+        1: Error (invalid arguments or processing failure)
+    """
     if len(sys.argv) < 2:
         print("Usage: python get_color.py [-hex] [-color2hex] [-lighten] <image_path|color_name>", file=sys.stderr)
         sys.exit(1)

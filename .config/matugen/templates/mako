@@ -5,7 +5,9 @@ font=FiraCode Nerd Font Mono 12
 padding=10
 border-size=1
 border-radius=10
-default-timeout=5000
+default-timeout=10000
+max-history=10
+width=400
 
 [urgency=high]
 border-color={{colors.error_container.default.hex}}e8

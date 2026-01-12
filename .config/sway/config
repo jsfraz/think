@@ -90,6 +90,12 @@ for_window [app_id="org.pulseaudio.pavucontrol"] {
     floating enable;
 }
 
+# Android emulator
+for_window [class="jetbrains-studio"] {
+    border normal;
+    floating enable;
+}
+
 ### Screensaver terminal fullscreen
 for_window [app_id="screensaver"] {
     fullscreen enable;
