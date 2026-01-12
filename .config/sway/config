@@ -85,6 +85,11 @@ for_window [class="MEGAsync"] {
     floating enable;
 }
 
+# Fix for adding sync/backup folder window in MEGAsync
+for_window [class="MEGAsync" title="^Add .*$"] {
+    floating disable;
+}
+
 # Audio mixer
 for_window [app_id="org.pulseaudio.pavucontrol"] {
     floating enable;
