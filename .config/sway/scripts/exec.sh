@@ -8,7 +8,7 @@ kdeconnect-indicator &
 
 # Mega
 sleep 1; megasync &
-sleep 2; swaymsg '[class="MEGAsync"] move scratchpad'
+sleep 4; swaymsg '[class="MEGAsync"] move scratchpad'
 
 # Betterbird
 betterbird &

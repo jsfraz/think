@@ -27,7 +27,7 @@ TODO new images
 - **9 accent colors** - Blue, green, orange, pink, purple, red, teal, yellow, or auto-detect
 - **Custom status bar** - AGS bar with workspaces, tray, network, battery, clock, and RunCat animation
 - **Rofi menus** - App launcher, settings, network, and power menu with blur
-- **7 screensavers** - Matrix, pipes, aquarium, lavalamp, hollywood, train, or random
+- **7 screensavers** - Matrix, pipes, aquarium, lavalamp, hollywood, train, weather, or random
 - **SwayFX enhancements** - Rounded corners and blur effects
 - **Smart gaps and borders** - 10px gaps with smart border management
 - **Night light** - Blue light filter based on location
@@ -92,6 +92,7 @@ TODO new images
 - [brightnessctl](https://github.com/Hummer12007/brightnessctl)
 - [pavucontrol](https://archlinux.org/packages/extra/x86_64/pavucontrol/)
 - [wayvnc](https://github.com/any1/wayvnc)
+- [weathr](https://github.com/Veirt/weathr)
 
 ## swayfx
 

@@ -20,7 +20,7 @@ killall -q rofi
 
 # Set random screensaver if selected
 if [ "$SCREENSAVER" = "random" ]; then
-    SCREENSAVER_OPTIONS=("matrix" "pipes" "aquarium" "lavalamp" "hollywood" "train")
+    SCREENSAVER_OPTIONS=("matrix" "pipes" "aquarium" "lavalamp" "hollywood" "train" "weather")
     RANDOM_INDEX=$((RANDOM % ${#SCREENSAVER_OPTIONS[@]}))
     SCREENSAVER=${SCREENSAVER_OPTIONS[$RANDOM_INDEX]}
 fi
@@ -62,6 +62,9 @@ case $SCREENSAVER in
         ;;
     train)
         foot -a screensaver --font="FiraCode Nerd Font Mono":size=10 bash -c "sleep 0.1 && while true; do sl -ec3; sleep 2; done"
+        ;;
+    weather)
+        foot -a screensaver --font="FiraCode Nerd Font Mono":size=10 bash -c "sleep 0.1 && weathr"
         ;;
     *)
         notify-send "Screensaver Error" "Unknown screensaver: $SCREENSAVER"

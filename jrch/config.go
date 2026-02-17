@@ -19,7 +19,7 @@ type Config struct {
 	AutoclickEnabled  bool   `json:"autoclick_enabled"`
 	AutoclickInterval int    `json:"autoclick_interval" validate:"required"`
 	Keyboard          string `json:"keyboard" validate:"required,oneof=cz us"`
-	Screensaver       string `json:"screensaver" validate:"required,oneof=none random matrix pipes aquarium lavalamp hollywood train"`
+	Screensaver       string `json:"screensaver" validate:"required,oneof=none random matrix pipes aquarium lavalamp hollywood train weather"`
 }
 
 var (

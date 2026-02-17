@@ -113,7 +113,7 @@ Available fields:
   autoclick_enabled  - Enable autoclick feature
   autoclick_interval - Autoclick interval in milliseconds
   keyboard           - Keyboard layout (cz, us)
-  screensaver        - Screensaver type (none, random, matrix, pipes, aquarium, lavalamp, hollywood, train)
+  screensaver        - Screensaver type (none, random, matrix, pipes, aquarium, lavalamp, hollywood, train, weather)
 
 Example:
   jrch get mode

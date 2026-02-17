@@ -219,9 +219,12 @@ case ${chosen} in
             train)
                 active_screensaver_element="7"
                 ;;
+            weather)
+                active_screensaver_element="8"
+                ;;
         esac
         # Choose screensaver
-        chosen_screensaver="$(run_rofi "None\nRandom\nMatrix\nPipes\nAquarium\nLavalamp\nHollywood\nTrain" "$screensaver" "listview {columns: 3; lines: 3;}" $active_screensaver_element)"
+        chosen_screensaver="$(run_rofi "None\nRandom\nMatrix\nPipes\nAquarium\nLavalamp\nHollywood\nTrain\nWeather" "$screensaver" "listview {columns: 3; lines: 3;}" $active_screensaver_element)"
         chosen_screensaver=$(echo "$chosen_screensaver" | awk '{print tolower(substr($0,1,1)) substr($0,2)}')
         # Check if user canceled the selection
         if [ -z "$chosen_screensaver" ]; then
