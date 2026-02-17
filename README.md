@@ -62,7 +62,7 @@ TODO new images
 - [btop](https://github.com/aristocratos/btop)
 - [zenity-gtk3](https://aur.archlinux.org/packages/zenity-gtk3)
 - [darkman](https://gitlab.com/WhyNotHugo/darkman)
-- [nemo](https://github.com/linuxmint/nemo)
+- [thunar](https://github.com/neilbrown/thunar)
 - [Orchis-theme](https://github.com/vinceliuice/Orchis-theme) (`./install.sh -t all -s compact`)
 - [MoreWaita](https://github.com/somepaulo/MoreWaita)
 - [Adwaita-colors](https://github.com/dpejoh/Adwaita-colors) (run `sudo ./morewaita.sh` after installing MoreWaita and Adwaita-colors)
