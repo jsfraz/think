@@ -48,7 +48,8 @@ swaymsg output "*" bg $BACKGROUND_FILE_EXPANDED fill
 # TODO conky system load
 
 # Start swayosd-server
-swayosd-server &
+swayosd-server > /dev/null 2>&1 &
+disown
 
 # ags
 ASTAL_BATTERY_DIR=$(dirname $(find /usr -name "*AstalBattery*.typelib" 2>/dev/null))

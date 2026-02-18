@@ -64,7 +64,7 @@ case $SCREENSAVER in
         foot -a screensaver --font="FiraCode Nerd Font Mono":size=10 bash -c "sleep 0.1 && while true; do sl -ec3; sleep 2; done"
         ;;
     weather)
-        foot -a screensaver --font="FiraCode Nerd Font Mono":size=10 bash -c "sleep 0.1 && weathr"
+        foot -a screensaver --font="FiraCode Nerd Font Mono":size=10 bash -c "sleep 0.1 && weathr --hide-hud"
         ;;
     *)
         notify-send "Screensaver Error" "Unknown screensaver: $SCREENSAVER"
